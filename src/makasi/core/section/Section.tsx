@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { usePage } from "../page/page.context";
+import { usePage } from "../PageEdition/page.context";
 import { useWebsite } from "../website/website.context";
 import { SectionEdition } from "./edition/SectionEdition";
 import { SectionProvider, useSection } from "./section.context";

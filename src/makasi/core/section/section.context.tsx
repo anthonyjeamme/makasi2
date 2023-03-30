@@ -8,7 +8,7 @@ import {
   createUpdateFieldAction,
 } from "../actions/actions.utils";
 
-import { usePage } from "../page/page.context";
+import { usePage } from "../PageEdition/page.context";
 import { TSectionData } from "./Section.types";
 
 type TSectionContext = {

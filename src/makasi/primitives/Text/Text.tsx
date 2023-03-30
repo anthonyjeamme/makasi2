@@ -1,13 +1,13 @@
 import { FC } from "react";
+import dynamic from "next/dynamic";
 
-import { useSectionField } from "@/makasi/core/section/section.context";
 import { useWebsite } from "@/makasi/core/website/website.context";
 import { classNameModule } from "@/utils/className/className";
+import { useField } from "@/makasi/core/page/Page";
 
 import { TPrimitiveTextData } from "./Text.types";
 
 import styles from "./Text.module.scss";
-import dynamic from "next/dynamic";
 const className = classNameModule(styles);
 
 interface TTextProps {
@@ -16,23 +16,23 @@ interface TTextProps {
 
 export const Text: FC<TTextProps> = ({ field }) => {
   const { editionMode } = useWebsite();
-  const { data } = useSectionField<TPrimitiveTextData>(field);
 
   if (editionMode) {
     const TextEdition = dynamic(
       () => import("./Text.edition").then((module) => module.TextEdition),
       {
         ssr: false,
-        loading: () => <TextRead data={data} />,
       }
     );
 
     return <TextEdition field={field} />;
   }
 
-  return <TextRead data={data} />;
+  return <TextRead field={field} />;
 };
 
-const TextRead = ({ data }: { data: TPrimitiveTextData }) => (
-  <div {...className("Text")}>{data?.text || ""}</div>
-);
+const TextRead = ({ field }: { field: string }) => {
+  const { data } = useField<TPrimitiveTextData>(field);
+
+  return <div {...className("Text")}>{data?.text || ""}</div>;
+};

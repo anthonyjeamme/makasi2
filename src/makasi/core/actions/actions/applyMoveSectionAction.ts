@@ -1,6 +1,6 @@
 import produce from "immer";
 
-import { TPageData } from "../../page/Page.types";
+import { TPageData } from "../../PageEdition/Page.types";
 import { TMoveSectionAction } from "../actions.types";
 
 export const applyMoveSectionAction = (

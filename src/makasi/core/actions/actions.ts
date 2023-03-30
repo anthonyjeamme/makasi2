@@ -1,4 +1,4 @@
-import { TPageData } from "../page/Page.types";
+import { TPageData } from "../PageEdition/Page.types";
 import { TUpdateFieldAction, TUpdateAction } from "./actions.types";
 
 export const backAction = (pageData: TPageData, action: TUpdateAction) => {

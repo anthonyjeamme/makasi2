@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 
-import { pageReducer } from "@/makasi/core/page/Page.reducer";
+import { pageReducer } from "@/makasi/core/PageEdition/Page.reducer";
 
 type TData = {
   success: boolean;

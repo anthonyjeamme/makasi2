@@ -2,13 +2,10 @@ import fs from "fs";
 
 import { GetServerSideProps } from "next";
 import Page from "@/makasi/core/page/Page";
-import { TPageData } from "@/makasi/core/page/Page.types";
+import { TPageData } from "@/makasi/core/PageEdition/Page.types";
 import { headerSectionDefinition } from "@/sections/HeaderSection/HeaderSection.definition";
 import { paragraphSectionDefinition } from "@/sections/ParagraphSection/ParagraphSection.definition";
 import { FC } from "react";
-import dynamic from "next/dynamic";
-
-const Unsplash = dynamic(() => import("@/Unsplash/Unsplash"), { ssr: false });
 
 interface THomeProps {
   pageData: TPageData;

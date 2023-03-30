@@ -4,7 +4,7 @@ import { ArrowDown, ArrowUp, List, Plus, Trash, X } from "phosphor-react";
 import { classNameModule } from "@/utils/className/className";
 
 import { createRemoveSectionAction } from "../../actions/actions.utils";
-import { usePage } from "../../page/page.context";
+import { usePage } from "../../PageEdition/page.context";
 import { useSection, useSectionEdition } from "../section.context";
 
 import styles from "./SectionEdition.module.scss";

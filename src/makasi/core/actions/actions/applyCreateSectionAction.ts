@@ -1,4 +1,4 @@
-import { TPageData } from "../../page/Page.types";
+import { TPageData } from "../../PageEdition/Page.types";
 import { TCreateSectionAction } from "../actions.types";
 
 export const applyCreateSectionAction = (
