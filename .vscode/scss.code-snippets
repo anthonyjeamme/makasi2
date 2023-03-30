@@ -1,0 +1,6 @@
+{
+  "Component Template": {
+    "prefix": "init",
+    "body": [".${TM_FILENAME_BASE/(^[^.]+).*/$1/}{", "    //$1", "}"]
+  }
+}

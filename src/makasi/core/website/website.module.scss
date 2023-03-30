@@ -1,0 +1,21 @@
+.EditionButton {
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  border: 0;
+  display: flex;
+  cursor: pointer;
+  background-color: var(--light);
+  transition: background-color 250ms;
+  border: 2px solid var(--light);
+
+  &.active {
+    //
+    background-color: var(--dark);
+    color: white;
+  }
+
+  & > svg {
+    margin: auto;
+  }
+}

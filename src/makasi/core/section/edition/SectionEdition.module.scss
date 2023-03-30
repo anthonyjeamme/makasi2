@@ -1,0 +1,119 @@
+div:has(> .SectionEdition) {
+  overflow: hidden;
+
+  &:hover {
+    & > .SectionEdition {
+      .top-right {
+        transform: none;
+      }
+
+      & > .before-button,
+      & > .after-button {
+        transform: none;
+      }
+    }
+  }
+}
+
+.SectionEdition {
+  & > .top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    padding: 10px;
+
+    transition: transform 250ms;
+    transform: translateY(-100%);
+
+    & > button {
+      height: 40px;
+      width: 40px;
+      border-radius: 40px;
+      border: 0;
+      display: flex;
+      font-size: 15px;
+      margin-left: 10px;
+
+      & > svg {
+        margin: auto;
+      }
+    }
+  }
+
+  & > .before-button,
+  & > .after-button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    transition: transform 250ms;
+
+    & > button {
+      height: 40px;
+      width: 40px;
+      border-radius: 40px;
+      display: flex;
+      font-size: 15px;
+
+      & > svg {
+        margin: auto;
+      }
+    }
+  }
+
+  & > .before-button {
+    top: 0;
+    transform: translateY(-100%);
+  }
+
+  & > .after-button {
+    bottom: 0;
+    transform: translateY(100%);
+  }
+
+  @keyframes ParamsEntry {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  & > .params {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    background-color: white;
+    z-index: 100;
+    animation: ParamsEntry 250ms;
+
+    & > header {
+      padding: 10px;
+      display: flex;
+      justify-content: flex-end;
+
+      & > button {
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+        display: flex;
+        & > svg {
+          margin: auto;
+        }
+      }
+    }
+
+    & > .content {
+      padding: 10px;
+    }
+  }
+}

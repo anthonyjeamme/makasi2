@@ -1,0 +1,43 @@
+{
+  "Component Template": {
+    "prefix": "slc",
+    "body": [
+      "import { FC } from 'react';",
+      "import { classNameModule } from '@/utils/className/className';",
+      "",
+      "import styles from './${TM_FILENAME_BASE/(^[^.]+).*/$1/}.module.scss';",
+      "",
+      "const className = classNameModule(styles);",
+      "",
+      "interface T${TM_FILENAME_BASE/(^[^.]+).*/$1/}Props {",
+      "  //",
+      "}",
+      "",
+      "export const ${TM_FILENAME_BASE/(^[^.]+).*/$1/}: FC<T${TM_FILENAME_BASE/(^[^.]+).*/$1/}Props> = () => {",
+      "  return <div {...className('${TM_FILENAME_BASE/(^[^.]+).*/$1/}')}>$1</div>;",
+      "};"
+    ]
+  },
+  "Context": {
+    "prefix": "ctx",
+    "body": [
+      "import { createContext, FC, ReactNode, useContext } from 'react';",
+      "",
+      "type T${TM_FILENAME_BASE/(^[^.]+).*/${1:/capitalize}/}Context = {",
+      "  //",
+      "};",
+      "",
+      "const ${TM_FILENAME_BASE/(^[^.]+).*/$1/}Context = createContext<T${TM_FILENAME_BASE/(^[^.]+).*/${1:/capitalize}/}Context>({});",
+      "",
+      "interface T${TM_FILENAME_BASE/(^[^.]+).*/${1:/capitalize}/}ProviderProps {",
+      "  children: ReactNode;",
+      "}",
+      "",
+      "export const ${TM_FILENAME_BASE/(^[^.]+).*/${1:/capitalize}/}Provider: FC<T${TM_FILENAME_BASE/(^[^.]+).*/${1:/capitalize}/}ProviderProps> = ({ children }) => {",
+      "  return <${TM_FILENAME_BASE/(^[^.]+).*/$1/}Context.Provider value={{}}>{children}</${TM_FILENAME_BASE/(^[^.]+).*/$1/}Context.Provider>;",
+      "};",
+      "",
+      "export const use${TM_FILENAME_BASE/(^[^.]+).*/${1:/capitalize}/} = () => useContext(${TM_FILENAME_BASE/(^[^.]+).*/$1/}Context);"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+.ParagraphSection {
+  padding: 200px 0;
+  background-color: var(--dark);
+  color: white;
+
+  & > .container {
+    width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+}
