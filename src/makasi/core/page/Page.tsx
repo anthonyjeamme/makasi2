@@ -51,6 +51,7 @@ export function useField<TData>(fieldName: string): {
   const { data } = useContext(sectionContext);
 
   return {
+    // @ts-ignore
     data: data.fieldsData[fieldName],
   };
 }
@@ -70,6 +71,7 @@ const Section: FC<TSectionProps> = ({ data, sectionsDefinitions }) => {
   const { Component } = definition;
 
   return (
+    // @ts-ignore
     <sectionContext.Provider value={{ data }}>
       <Component data={data} />
     </sectionContext.Provider>
