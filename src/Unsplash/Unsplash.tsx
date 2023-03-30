@@ -26,7 +26,7 @@ export const Unsplash: FC<TUnsplashProps> = () => {
         console.log();
 
         setImages(
-          images.map((img) => ({
+          images.map((img: any) => ({
             id: img.id,
             url: img.urls.small,
           }))
