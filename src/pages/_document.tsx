@@ -9,7 +9,7 @@ import {
 export default function Document() {
   return (
     <Html lang="en">
-      <Head>
+      <Head title="Default title">
         <MakasiDocumentHead websiteData={websiteData} />
       </Head>
       <body>
@@ -24,11 +24,6 @@ export default function Document() {
 
 const websiteData: TWebsiteData = {
   fonts: [
-    {
-      provider: "google",
-      family: "Six Caps",
-      type: "sans-serif",
-    },
     {
       main: true,
       provider: "google",

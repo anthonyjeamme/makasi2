@@ -44,6 +44,7 @@ export const WebsiteProvider: FC<TWebsiteProviderProps> = ({ children }) => {
           onClick={() => {
             setEditionMode(!editionMode);
           }}
+          title="Toggle edition mode"
         >
           {editionMode ? <X /> : <Pencil />}
         </button>

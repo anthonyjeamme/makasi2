@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { TPageData } from "../PageEdition/Page.types";
 import { TSectionData, TSectionDefinition } from "../section/Section.types";
 import { useWebsite } from "../website/website.context";
+import { PageHead } from "../PageEdition/PageHead";
 
 const PageEdition = dynamic(() => import("../PageEdition/Page"), {
   ssr: false,
@@ -28,6 +29,7 @@ const Page: FC<TPageProps> = ({ pageData, sectionsDefinitions }) => {
 
   return (
     <main>
+      <PageHead pageData={pageData} />
       {pageData.sections.map((section) => (
         <Section
           key={section.id}
