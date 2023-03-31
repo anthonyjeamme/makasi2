@@ -5,9 +5,9 @@ export const MakasiDocumentHead: FC<{
 }> = ({ websiteData }) => {
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link href={getGoogleProviderFontURL(websiteData)} rel="stylesheet" />
+      <link href={getGoogleProviderFontURL(websiteData)} rel="stylesheet" /> */}
     </>
   );
 };
@@ -20,7 +20,7 @@ export const MakasiDocumentBody: FC<{
     <div
       style={
         {
-          fontFamily: getMainFont(websiteData),
+          // fontFamily: getMainFont(websiteData),
           "--dark": "#172b49",
           "--light": "#f4f5fd",
           "--error": "#e74c3c",

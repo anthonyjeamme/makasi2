@@ -1,5 +1,3 @@
-import fs from "fs";
-
 import { GetServerSideProps } from "next";
 import Page from "@/makasi/core/page/Page";
 import { TPageData } from "@/makasi/core/PageEdition/Page.types";
