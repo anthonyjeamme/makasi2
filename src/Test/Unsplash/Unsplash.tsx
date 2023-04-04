@@ -7,9 +7,10 @@ const className = classNameModule(styles);
 
 interface TUnsplashProps {
   //
+  handleSelectImage: (imageURL: string) => void;
 }
 
-export const Unsplash: FC<TUnsplashProps> = () => {
+export const Unsplash: FC<TUnsplashProps> = ({ handleSelectImage }) => {
   const [images, setImages] = useState(fakeData);
   const [search, setSearch] = useState("");
 
@@ -23,8 +24,6 @@ export const Unsplash: FC<TUnsplashProps> = () => {
     })
       .then((result) => result.json())
       .then(({ images }) => {
-        console.log();
-
         setImages(
           images.map((img: any) => ({
             id: img.id,
@@ -49,7 +48,12 @@ export const Unsplash: FC<TUnsplashProps> = () => {
       <div {...className("result")}>
         {images.map(({ id, url }) => (
           <div key={id}>
-            <img src={url} />
+            <img
+              src={url}
+              onClick={() => {
+                handleSelectImage(url);
+              }}
+            />
           </div>
         ))}
       </div>

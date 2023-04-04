@@ -3,6 +3,7 @@ import { applyCreateSectionAction } from "../actions/actions/applyCreateSectionA
 import { applyMoveSectionAction } from "../actions/actions/applyMoveSectionAction";
 import { applyRemoveSectionAction } from "../actions/actions/applyRemoveSectionAction";
 import { applyUpdateFieldAction } from "../actions/actions/applyUpdateFieldAction";
+import { applyUpdateSectionParamAction } from "../actions/actions/applyUpdateSectionParamAction";
 import { TPageData } from "./Page.types";
 
 export const pageReducer = (
@@ -21,6 +22,9 @@ export const pageReducer = (
 
     case "create-section":
       return applyCreateSectionAction(state, action);
+
+    case "update-section-param":
+      return applyUpdateSectionParamAction(state, action);
 
     default:
       return state;

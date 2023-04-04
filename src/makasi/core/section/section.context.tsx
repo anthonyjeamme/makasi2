@@ -6,6 +6,7 @@ import {
   createMoveSectionAction,
   createRemoveSectionAction,
   createUpdateFieldAction,
+  createUpdateSectionParamAction,
 } from "../actions/actions.utils";
 
 import { usePage } from "../PageEdition/page.context";
@@ -124,13 +125,29 @@ export const useSectionEdition = () => {
     );
   };
 
+  const updateParam = (paramKey: string, value: any) => {
+    const location = getLocation();
+
+    pushAction?.(
+      createUpdateSectionParamAction(
+        location.pageId,
+        location.sectionId,
+        paramKey,
+        value,
+        data.params[paramKey]
+      )
+    );
+  };
+
   return {
+    data,
     getLocation,
     remove,
     moveUp,
     moveDown,
     addSectionBefore,
     addSectionAfter,
+    updateParam,
   };
 };
 

@@ -1,7 +1,6 @@
 .Unsplash {
   //
 
-  width: 1000px;
   margin: 40px auto;
 
   & > header {
@@ -20,6 +19,7 @@
       img {
         display: flex;
         width: 100%;
+        cursor: pointer;
       }
     }
   }

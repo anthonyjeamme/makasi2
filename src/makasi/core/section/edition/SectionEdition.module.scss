@@ -91,13 +91,15 @@ div:has(> .SectionEdition) {
     top: 0;
     right: 0;
     bottom: 0;
-    width: 300px;
+    width: 400px;
     background-color: white;
     z-index: 100;
     animation: ParamsEntry 250ms;
+    display: flex;
+    flex-direction: column;
 
     & > header {
-      padding: 10px;
+      padding: 20px 20px 0 20px;
       display: flex;
       justify-content: flex-end;
 
@@ -113,7 +115,44 @@ div:has(> .SectionEdition) {
     }
 
     & > .content {
-      padding: 10px;
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+  }
+}
+
+.BackgroundParam {
+  padding: 20px 00;
+
+  & > header {
+    display: flex;
+    margin-bottom: 20px;
+
+    & > * {
+      flex-grow: 1;
+
+      background-color: var(--light);
+      height: 40px;
+
+      &.active {
+        background-color: var(--dark);
+        color: var(--light);
+      }
+    }
+  }
+}
+
+.SizingParam {
+  display: flex;
+
+  & > * {
+    flex-grow: 1;
+    height: 40px;
+
+    &.active {
+      background-color: var(--dark);
+      color: var(--light);
     }
   }
 }

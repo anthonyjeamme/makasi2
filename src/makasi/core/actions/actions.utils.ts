@@ -4,6 +4,7 @@ import {
   TMoveSectionAction,
   TUpdateFieldAction,
   TCreateSectionAction,
+  TUpdateSectionParamAction,
 } from "./actions.types";
 
 /**
@@ -62,4 +63,23 @@ export const createCreateSectionAction = (
   index,
   pageId,
   sectionData,
+});
+
+/**
+ *
+ */
+export const createUpdateSectionParamAction = (
+  pageId: string,
+  sectionId: string,
+  paramKey: string,
+  paramValue: any,
+  oldValue: any
+): TUpdateSectionParamAction => ({
+  type: "update-section-param",
+  dt: Date.now(),
+  pageId,
+  sectionId,
+  paramKey,
+  paramValue,
+  oldValue,
 });

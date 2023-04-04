@@ -14,17 +14,18 @@ interface THeaderSectionProps {
   data: TSectionData<{
     background: TBackgroundParam;
     color: string;
+    sizing: any;
   }>;
 }
 
 const HeaderSection: FC<THeaderSectionProps> = ({ data }) => {
   return (
+    // SectionContainer ? SectionStylization ? May be a bad idea ? Less flexibility ?
     <Background data={data.params.background}>
       <div
-        {...className("HeaderSection")}
+        {...className("HeaderSection", `sizing-${data.params.sizing.value}`)}
         style={
           {
-            // "--background": getCSSProperty(data?.params?.background),
             "--color": getCSSProperty(data?.params.color),
           } as CSSProperties
         }

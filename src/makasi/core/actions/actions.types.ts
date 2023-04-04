@@ -2,7 +2,8 @@ export type TUpdateAction =
   | TUpdateFieldAction
   | TRemoveSectionAction
   | TMoveSectionAction
-  | TCreateSectionAction;
+  | TCreateSectionAction
+  | TUpdateSectionParamAction;
 
 export type TUpdateFieldAction = {
   type: "update-field";
@@ -36,4 +37,14 @@ export type TCreateSectionAction = {
   pageId: string;
   sectionData: any;
   index: number;
+};
+
+export type TUpdateSectionParamAction = {
+  type: "update-section-param";
+  dt: number;
+  pageId: string;
+  sectionId: string;
+  paramKey: string;
+  paramValue: any;
+  oldValue: any;
 };

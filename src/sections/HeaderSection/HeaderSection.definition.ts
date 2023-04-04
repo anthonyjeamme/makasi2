@@ -14,8 +14,15 @@ export const headerSectionDefinition: TSectionDefinition = {
     },
   }),
   getDefaultParams: () => ({
-    background:
-      "https://images.unsplash.com/photo-1550945364-6373abbd7a2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
+    background: {
+      __param_type: "background",
+      type: "color",
+      color: "--dark",
+    },
+    sizing: {
+      __param_type: "sizing",
+      value: "medium",
+    },
     color: "white",
   }),
 };
