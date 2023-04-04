@@ -7,14 +7,14 @@ import { Text } from "@/makasi/primitives/Text/Text";
 
 import styles from "./HeaderSection.module.scss";
 import { Background } from "@/makasi/primitives/Background/Background";
-import { TBackgroundParam } from "@/makasi/primitives/Background/Background.types";
+import { TBackgroundParamValue } from "@/makasi/core/params/background/BackgroundParam.types";
+import { TTextColorParamValue } from "@/makasi/core/params/textColor/textColorParam.types";
 const className = classNameModule(styles);
 
 interface THeaderSectionProps {
   data: TSectionData<{
-    background: TBackgroundParam;
-    color: string;
-    sizing: any;
+    background: TBackgroundParamValue;
+    textColor: TTextColorParamValue;
   }>;
 }
 
@@ -23,10 +23,13 @@ const HeaderSection: FC<THeaderSectionProps> = ({ data }) => {
     // SectionContainer ? SectionStylization ? May be a bad idea ? Less flexibility ?
     <Background data={data.params.background}>
       <div
-        {...className("HeaderSection", `sizing-${data.params.sizing.value}`)}
+        {...className(
+          "HeaderSection"
+          // `sizing-${data.params.sizing.value}`
+        )}
         style={
           {
-            "--color": getCSSProperty(data?.params.color),
+            "--color": getCSSProperty(data.params.textColor.color),
           } as CSSProperties
         }
       >

@@ -1,0 +1,74 @@
+.IntroSection {
+  //
+  padding: 200px 0;
+  width: 800px;
+  margin: 0 auto;
+  color: var(--color);
+  text-align: center;
+  position: relative;
+
+  .over-title {
+    font-weight: 600;
+  }
+
+  .subtitle {
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.4;
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 50px;
+    max-width: 500px;
+    margin: 20px auto;
+    font-weight: 800;
+  }
+
+  & > .mail {
+    margin: 60px auto;
+    width: 300px;
+
+    input {
+      height: 60px;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 20px 0;
+      border-radius: 4px;
+      border: 0;
+      padding: 0 30px;
+      text-align: center;
+
+      &::placeholder {
+        color: rgba(var(--dark-dec), 0.4);
+        font-weight: 400;
+      }
+    }
+
+    button {
+      height: 60px;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 0;
+      padding: 0 30px;
+      background-color: #3498db;
+      color: white;
+      transition: background-color 250ms;
+
+      &:hover {
+        background-color: #2685c5;
+      }
+    }
+  }
+
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    color: white;
+    font-size: 40px;
+    margin-top: 100px;
+    opacity: 0.8;
+  }
+}

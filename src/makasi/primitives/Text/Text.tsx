@@ -1,12 +1,11 @@
 import { FC } from "react";
 import dynamic from "next/dynamic";
 
-import { useWebsite } from "@/makasi/core/website/website.context";
-import { classNameModule } from "@/utils/className/className";
-import { useField } from "@/makasi/core/page/Page";
-
+import { useEditionContext } from "@/makasi/core/contexts/EditionContext/EditionContext";
+import { useField } from "@/makasi/core/Page/Page";
 import { TPrimitiveTextData } from "./Text.types";
 
+import { classNameModule } from "@/utils/className/className";
 import styles from "./Text.module.scss";
 const className = classNameModule(styles);
 
@@ -15,9 +14,9 @@ interface TTextProps {
 }
 
 export const Text: FC<TTextProps> = ({ field }) => {
-  const { editionMode } = useWebsite();
+  const { edition } = useEditionContext();
 
-  if (editionMode) {
+  if (edition) {
     const TextEdition = dynamic(
       () => import("./Text.edition").then((module) => module.TextEdition),
       {

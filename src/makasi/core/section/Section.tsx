@@ -1,7 +1,6 @@
 import { FC } from "react";
 
 import { usePage } from "../PageEdition/page.context";
-import { useWebsite } from "../website/website.context";
 import { SectionEdition } from "./edition/SectionEdition";
 import { SectionProvider, useSection } from "./section.context";
 
@@ -18,15 +17,13 @@ export const Section: FC<TSectionProps> = ({ sectionId }) => {
 };
 
 const SectionContent = () => {
-  const { editionMode } = useWebsite();
   const { getSectionComponent } = usePage();
   const { data } = useSection();
 
   const Component = getSectionComponent(data.name);
 
   if (!Component) {
-    if (editionMode) return <div>NOT FOUND</div>;
-    return null;
+    return <div>NOT FOUND</div>;
   }
   return (
     <div
@@ -34,7 +31,7 @@ const SectionContent = () => {
         position: "relative",
       }}
     >
-      {editionMode && <SectionEdition />}
+      <SectionEdition />
       <Component data={data} />
     </div>
   );

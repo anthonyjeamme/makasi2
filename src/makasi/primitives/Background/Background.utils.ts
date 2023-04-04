@@ -1,7 +1,7 @@
-import { TImageBackground } from "./Background.types";
+import { TImageBackgroundValue } from "@/makasi/core/params/background/BackgroundParam.types";
 
 export const getResponsiveImageURL = (
-  image: TImageBackground,
+  image: TImageBackgroundValue,
   containerElement: HTMLDivElement
 ) => {
   if (image.provider === "unsplash") {

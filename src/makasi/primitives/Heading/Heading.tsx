@@ -1,13 +1,13 @@
 import { createElement, FC } from "react";
 import dynamic from "next/dynamic";
 
-import { useWebsite } from "@/makasi/core/website/website.context";
 import { classNameModule } from "@/utils/className/className";
 
 import { TPrimitiveHeadingData } from "./Heading.types";
 
 import styles from "./Heading.module.scss";
-import { useField } from "@/makasi/core/page/Page";
+import { useField } from "@/makasi/core/Page/Page";
+import { useEditionContext } from "@/makasi/core/contexts/EditionContext/EditionContext";
 const className = classNameModule(styles);
 
 interface THeadingProps {
@@ -15,9 +15,9 @@ interface THeadingProps {
 }
 
 export const Heading: FC<THeadingProps> = ({ field }) => {
-  const { editionMode } = useWebsite();
+  const { edition } = useEditionContext();
 
-  if (editionMode) {
+  if (edition) {
     const HeadingEdition = dynamic(
       () => import("./Heading.edition").then((module) => module.HeadingEdition),
       {

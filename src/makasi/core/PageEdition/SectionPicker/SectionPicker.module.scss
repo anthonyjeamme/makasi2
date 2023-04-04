@@ -1,0 +1,27 @@
+.SectionPicker {
+  //
+
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+
+  & > .definitions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    & > .definition {
+      padding: 10px;
+      border: 2px solid rgba(var(--dark-dec), 0.1);
+      transition: border-color 250ms;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 200px;
+      text-align: center;
+
+      &:hover {
+        border: 2px solid rgba(var(--dark-dec), 0.3);
+      }
+    }
+  }
+}

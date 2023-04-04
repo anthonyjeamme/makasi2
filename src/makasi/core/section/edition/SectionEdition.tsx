@@ -1,20 +1,32 @@
-import { FC, useState } from "react";
-import { ArrowDown, ArrowUp, List, Plus, Trash, X } from "phosphor-react";
+import { FC, useRef, useState } from "react";
+import {
+  ArrowDown,
+  ArrowUp,
+  List,
+  Pencil,
+  Plus,
+  Trash,
+  X,
+} from "phosphor-react";
 
 import { classNameModule } from "@/utils/className/className";
 
-import { createRemoveSectionAction } from "../../actions/actions.utils";
-import { usePage } from "../../PageEdition/page.context";
-import { useSection, useSectionEdition } from "../section.context";
+import { useSectionEdition } from "../section.context";
 
-import Unsplash from "@/Test/Unsplash/Unsplash";
+import { BackgroundParamEdition } from "../../params/background/BackgroundParamEdition";
+import { TSectionParamValue } from "../../params/params.types";
+import {
+  backgroundParamType,
+  TBackgroundParamValue,
+} from "../../params/background/BackgroundParam.types";
+import {
+  textColorParamType,
+  TTextColorParamValue,
+} from "../../params/textColor/textColorParam.types";
+import { TextColorParamEdition } from "../../params/textColor/TextColorParamEdition";
 
 import styles from "./SectionEdition.module.scss";
-import {
-  TBackgroundParam,
-  TColorBackground,
-  TImageBackground,
-} from "@/makasi/primitives/Background/Background.types";
+import { useClickOutside } from "@/makasi/utils/useClickOutside/useClickOutside";
 const className = classNameModule(styles);
 
 interface TSectionEditionProps {
@@ -29,7 +41,7 @@ export const SectionEdition: FC<TSectionEditionProps> = () => {
 
   return (
     <div {...className("SectionEdition")}>
-      <div {...className("top-right")}>
+      <div {...className("top-left")}>
         <button onClick={moveUp}>
           <ArrowUp />
         </button>
@@ -37,16 +49,16 @@ export const SectionEdition: FC<TSectionEditionProps> = () => {
         <button onClick={moveDown}>
           <ArrowDown />
         </button>
+      </div>
 
-        <button onClick={remove}>
-          <Trash />
-        </button>
+      <div {...className("top-right")}>
+        <RemoveButton handleRemove={remove} />
         <button
           onClick={() => {
             setParamIsOpen(!paramIsOpen);
           }}
         >
-          <List />
+          <Pencil />
         </button>
       </div>
 
@@ -61,143 +73,97 @@ export const SectionEdition: FC<TSectionEditionProps> = () => {
           <Plus />
         </button>
       </div>
-      {paramIsOpen && (
-        <div {...className("params")}>
-          <header>
-            <button
-              onClick={() => {
-                setParamIsOpen(false);
-              }}
-            >
-              <X />
-            </button>
-          </header>
-          <div {...className("content")}>
-            <SidePanel />
-          </div>
+      <div {...className("params", { open: paramIsOpen })}>
+        <header>
+          <button
+            onClick={() => {
+              setParamIsOpen(false);
+            }}
+          >
+            <X />
+          </button>
+        </header>
+        <div {...className("content")}>
+          <SidePanel />
         </div>
-      )}
+      </div>
     </div>
+  );
+};
+
+interface TRemoveButtonProps {
+  handleRemove: () => void;
+}
+
+const RemoveButton: FC<TRemoveButtonProps> = ({ handleRemove }) => {
+  const [confirmation, setConfirmation] = useState(false);
+  const rootRef = useRef<HTMLButtonElement>(null);
+
+  useClickOutside(confirmation, setConfirmation, rootRef);
+
+  return (
+    <span>
+      <button
+        ref={rootRef}
+        onClick={() => {
+          if (confirmation) {
+            handleRemove();
+          } else {
+            setConfirmation(true);
+          }
+        }}
+        {...className("RemoveButton", { confirmation })}
+      >
+        {confirmation ? <span>Supprimer</span> : <Trash />}
+      </button>
+    </span>
   );
 };
 
 const SidePanel = () => {
   const { data } = useSectionEdition();
 
+  const { getDefinition } = useSectionEdition();
+
+  const definition = getDefinition();
+  if (!definition) return null;
+
   return (
     <div {...className("SidePanel")}>
-      {Object.entries(data.params).map(([fieldName, param]) => (
-        <Param key={fieldName} fieldName={fieldName} param={param} />
+      {Object.entries(definition.params).map(([fieldName, paramDefinition]) => (
+        <Param
+          key={fieldName}
+          fieldName={fieldName}
+          paramDefinition={paramDefinition}
+          paramValue={data.params[fieldName]}
+        />
       ))}
     </div>
   );
 };
 
 const Param: FC<{
-  param: any;
+  paramDefinition: any;
+  paramValue: TSectionParamValue;
   fieldName: string;
-}> = ({ param, fieldName }) => {
-  if (param.__param_type === "background")
-    return <BackgroundParam fieldName={fieldName} param={param} />;
+}> = ({ paramDefinition, fieldName, paramValue }) => {
+  switch (paramDefinition.type) {
+    case backgroundParamType:
+      return (
+        <BackgroundParamEdition
+          paramKey={fieldName}
+          value={paramValue as TBackgroundParamValue}
+        />
+      );
 
-  if (param.__param_type === "sizing")
-    return <SizingParam fieldName={fieldName} param={param} />;
+    case textColorParamType:
+      return (
+        <TextColorParamEdition
+          paramKey={fieldName}
+          value={paramValue as TTextColorParamValue}
+        />
+      );
+  }
 
   return null;
-};
-
-type TSizingParam = {
-  value: "small" | "medium" | "large";
-};
-
-const SizingParam: FC<{
-  param: TSizingParam;
-  fieldName: string;
-}> = ({ param, fieldName }) => {
-  const { updateParam } = useSectionEdition();
-
-  const bindValue = (value: "small" | "medium" | "large") => {
-    return {
-      ...className({ active: param.value === value }),
-      onClick: () => {
-        updateParam(fieldName, {
-          value,
-        });
-      },
-    };
-  };
-
-  return (
-    <div {...className("SizingParam")}>
-      <button {...bindValue("small")}>Petit</button>
-      <button {...bindValue("medium")}>Moyen</button>
-      <button {...bindValue("large")}>Grand</button>
-    </div>
-  );
-};
-
-const BackgroundParam: FC<{
-  param: TBackgroundParam;
-  fieldName: string;
-}> = ({ param, fieldName }) => {
-  const { updateParam } = useSectionEdition();
-
-  return (
-    <div {...className("BackgroundParam")}>
-      <header>
-        <button
-          {...className({ active: param.type === "image" })}
-          onClick={() => {
-            if (param.type === "image") return;
-
-            updateParam(fieldName, {
-              type: "image",
-              provider: "unsplash",
-              url: "https://images.unsplash.com/photo-1550945364-6373abbd7a2d?auto=format&fit=crop&w=1742&q=80",
-            } as TImageBackground);
-          }}
-        >
-          Image
-        </button>
-        <button
-          {...className({ active: param.type === "color" })}
-          onClick={() => {
-            if (param.type === "color") return;
-
-            updateParam(fieldName, {
-              type: "color",
-              color: "red",
-            } as TColorBackground);
-          }}
-        >
-          Couleur
-        </button>
-      </header>
-      {param.type === "image" && (
-        <div>
-          <Unsplash
-            handleSelectImage={(image) => {
-              updateParam(fieldName, {
-                type: "image",
-                provider: "unsplash",
-                url: image,
-              } as Partial<TImageBackground>);
-            }}
-          />
-        </div>
-      )}
-      {param.type === "color" && (
-        <div>
-          <input
-            defaultValue={param.color}
-            onBlur={(e) => {
-              updateParam(fieldName, {
-                color: e.target.value,
-              } as TColorBackground);
-            }}
-          />
-        </div>
-      )}
-    </div>
-  );
 };

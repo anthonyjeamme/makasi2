@@ -1,13 +1,15 @@
 import fs from "fs";
 
 import { GetServerSideProps } from "next";
-import Page from "@/makasi/core/page/Page";
+import Page from "@/makasi/core/Page/Page";
 import { TPageData } from "@/makasi/core/PageEdition/Page.types";
 import { headerSectionDefinition } from "@/sections/HeaderSection/HeaderSection.definition";
 import { paragraphSectionDefinition } from "@/sections/ParagraphSection/ParagraphSection.definition";
 import { FC } from "react";
 import dynamic from "next/dynamic";
 import { WebsiteProvider } from "@/makasi/core/website/website.context";
+import { imageSectionDefinition } from "@/sections/ImageSection/ImageSection.definition";
+import { introSectionDefinition } from "@/sections/IntroSection/IntroSection.definition";
 
 const PageEdition = dynamic(() => import("../makasi/core/PageEdition/Page"), {
   ssr: false,
@@ -19,7 +21,7 @@ interface THomeProps {
 
 export const Home: FC<THomeProps> = ({ pageData }) => {
   return (
-    <WebsiteProvider editionMode>
+    <WebsiteProvider>
       <PageEdition
         pageData={pageData}
         sectionsDefinitions={sectionsDefinitions}
@@ -41,6 +43,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const sectionsDefinitions = [
+  introSectionDefinition,
   headerSectionDefinition,
   paragraphSectionDefinition,
+  imageSectionDefinition,
 ];

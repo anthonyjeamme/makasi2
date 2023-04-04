@@ -1,17 +1,16 @@
 import { FC, ReactNode, useEffect, useRef, useState } from "react";
 
-import {
-  TBackgroundParam,
-  TColorBackground,
-  TImageBackground,
-} from "./Background.types";
-import { getResponsiveImageURL } from "./Background.utils";
 import Image, { ImageLoaderProps } from "next/image";
+import {
+  TBackgroundParamValue,
+  TColorBackgroundValue,
+  TImageBackgroundValue,
+} from "@/makasi/core/params/background/BackgroundParam.types";
 
 interface TBackgroundProps {
   //
   children: ReactNode;
-  data: TBackgroundParam;
+  data: TBackgroundParamValue;
 }
 
 export const Background: FC<TBackgroundProps> = ({ children, data }) => {
@@ -21,25 +20,16 @@ export const Background: FC<TBackgroundProps> = ({ children, data }) => {
   if (data.type === "color")
     return <ColorBackground data={data}>{children}</ColorBackground>;
 
-  return null;
+  return <>{children}</>;
 };
 
 interface TBackgroundImageProps {
   children: ReactNode;
-  data: TImageBackground;
+  data: TImageBackgroundValue;
 }
 
 const BackgroundImage: FC<TBackgroundImageProps> = ({ data, children }) => {
-  const [url, setURL] = useState<null | string>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const containerElement = containerRef.current;
-
-    if (!containerElement) return;
-
-    setURL(getResponsiveImageURL(data, containerElement));
-  }, []);
 
   return (
     <div
@@ -66,7 +56,7 @@ const BackgroundImage: FC<TBackgroundImageProps> = ({ data, children }) => {
 
 interface TColorBackgroundProps {
   children: ReactNode;
-  data: TColorBackground;
+  data: TColorBackgroundValue;
 }
 
 const unsplashLoader = ({ src, width, quality }: ImageLoaderProps) => {

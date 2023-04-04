@@ -8,7 +8,9 @@ export type TPageContext = {
   getSectionData: (sectionId: string) => any;
   getSectionComponent: (sectionId: string) => ComponentType<any> | null;
   getDefinitions: () => TSectionDefinition[];
+  getSectionDefinition: (sectionType: string) => TSectionDefinition | null;
   pushAction?: (action: any) => void;
+  addSection: (index: number) => void;
 };
 
 export type TPageData = {

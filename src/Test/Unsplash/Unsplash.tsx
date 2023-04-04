@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { classNameModule } from "@/utils/className/className";
 
 import styles from "./Unsplash.module.scss";
+import { MagnifyingGlass } from "phosphor-react";
 
 const className = classNameModule(styles);
 
@@ -36,13 +37,21 @@ export const Unsplash: FC<TUnsplashProps> = ({ handleSelectImage }) => {
   return (
     <div {...className("Unsplash")}>
       <header>
+        <span {...className("icon")}>
+          <MagnifyingGlass />
+        </span>
         <input
+          placeholder="Rechercher une image"
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
           }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch();
+            }
+          }}
         />
-        <button onClick={handleSearch}>SEARCH</button>
       </header>
 
       <div {...className("result")}>

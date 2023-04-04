@@ -3,7 +3,8 @@ div:has(> .SectionEdition) {
 
   &:hover {
     & > .SectionEdition {
-      .top-right {
+      .top-right,
+      .top-left {
         transform: none;
       }
 
@@ -16,6 +17,38 @@ div:has(> .SectionEdition) {
 }
 
 .SectionEdition {
+  overflow: hidden;
+
+  & > .top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    display: flex;
+    padding: 10px;
+
+    transition: transform 250ms;
+    transform: translateY(-100%);
+
+    & > * {
+      margin-left: 10px;
+    }
+
+    & > button {
+      height: 36px;
+      width: 36px;
+      border-radius: 36px;
+      border: 0;
+      display: flex;
+      font-size: 15px;
+      background-color: white;
+
+      & > svg {
+        margin: auto;
+      }
+    }
+  }
+
   & > .top-right {
     position: absolute;
     top: 0;
@@ -27,14 +60,18 @@ div:has(> .SectionEdition) {
     transition: transform 250ms;
     transform: translateY(-100%);
 
+    & > * {
+      margin-left: 10px;
+    }
+
     & > button {
-      height: 40px;
-      width: 40px;
-      border-radius: 40px;
+      height: 36px;
+      width: 36px;
+      border-radius: 36px;
       border: 0;
       display: flex;
       font-size: 15px;
-      margin-left: 10px;
+      background-color: white;
 
       & > svg {
         margin: auto;
@@ -54,11 +91,12 @@ div:has(> .SectionEdition) {
     transition: transform 250ms;
 
     & > button {
-      height: 40px;
-      width: 40px;
-      border-radius: 40px;
+      height: 36px;
+      width: 36px;
+      border-radius: 36px;
       display: flex;
       font-size: 15px;
+      background-color: white;
 
       & > svg {
         margin: auto;
@@ -76,16 +114,6 @@ div:has(> .SectionEdition) {
     transform: translateY(100%);
   }
 
-  @keyframes ParamsEntry {
-    from {
-      transform: translateX(100%);
-    }
-
-    to {
-      transform: translateX(0);
-    }
-  }
-
   & > .params {
     position: absolute;
     top: 0;
@@ -94,9 +122,16 @@ div:has(> .SectionEdition) {
     width: 400px;
     background-color: white;
     z-index: 100;
-    animation: ParamsEntry 250ms;
     display: flex;
     flex-direction: column;
+    transition: transform 250ms;
+    transform: translateX(100%);
+    pointer-events: none;
+
+    &.open {
+      transform: translateX(0);
+      pointer-events: all;
+    }
 
     & > header {
       padding: 20px 20px 0 20px;
@@ -104,9 +139,9 @@ div:has(> .SectionEdition) {
       justify-content: flex-end;
 
       & > button {
-        height: 40px;
-        width: 40px;
-        border-radius: 40px;
+        height: 36px;
+        width: 36px;
+        border-radius: 36px;
         display: flex;
         & > svg {
           margin: auto;
@@ -118,6 +153,15 @@ div:has(> .SectionEdition) {
       padding: 20px;
       overflow-y: auto;
       flex: 1;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--light);
+        border-radius: 4px;
+      }
     }
   }
 }
@@ -153,6 +197,51 @@ div:has(> .SectionEdition) {
     &.active {
       background-color: var(--dark);
       color: var(--light);
+    }
+  }
+}
+
+@keyframes RemoveButtonConfirmationEntry {
+  from {
+    color: transparent;
+  }
+
+  to {
+    color: white;
+  }
+}
+
+.SidePanel {
+  display: flex;
+  flex-direction: column;
+
+  & > :not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.RemoveButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 36px;
+  transition: width 250ms, background-color 250ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: white;
+
+  &.confirmation {
+    width: 120px;
+    background-color: var(--error) !important;
+    color: white;
+    animation: RemoveButtonConfirmationEntry 250ms;
+    animation-delay: 150ms;
+    animation-fill-mode: both !important;
+
+    &:hover {
+      background-color: #e33422 !important;
     }
   }
 }

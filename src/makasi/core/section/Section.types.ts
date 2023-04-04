@@ -1,4 +1,5 @@
 import { ComponentType, FC } from "react";
+import { TSectionParamValue } from "../params/params.types";
 
 export type TSectionData<TParams = Record<string, any>> = {
   id: string;
@@ -9,9 +10,10 @@ export type TSectionData<TParams = Record<string, any>> = {
 
 export type TSectionDefinition = {
   id: string;
+  label: string;
   Component: ComponentType<any>;
   getDefaultFieldsData: () => Record<string, any>;
-  getDefaultParams: () => Record<string, any>;
+  params: Record<string, { type: string; defaultValue: TSectionParamValue }>;
 };
 
 export type TSectionLocation = {

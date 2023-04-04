@@ -1,14 +1,9 @@
 import { createContext, FC, useContext } from "react";
-import dynamic from "next/dynamic";
 
 import { TPageData } from "../PageEdition/Page.types";
 import { TSectionData, TSectionDefinition } from "../section/Section.types";
-import { useWebsite } from "../website/website.context";
 import { PageHead } from "../PageEdition/PageHead";
-
-// const PageEdition = dynamic(() => import("../PageEdition/Page"), {
-//   ssr: false,
-// });
+import { ThemeProvider } from "../contexts/ThemeContext/ThemeContext";
 
 interface TPageProps {
   pageData: TPageData;
@@ -16,28 +11,42 @@ interface TPageProps {
 }
 
 const Page: FC<TPageProps> = ({ pageData, sectionsDefinitions }) => {
-  // const { editionMode } = useWebsite();
-
-  // if (editionMode) {
-  //   return (
-  //     <PageEdition
-  //       pageData={pageData}
-  //       sectionsDefinitions={sectionsDefinitions}
-  //     />
-  //   );
-  // }
-
   return (
-    <main>
-      <PageHead pageData={pageData} />
-      {pageData.sections.map((section) => (
-        <Section
-          key={section.id}
-          data={section}
-          sectionsDefinitions={sectionsDefinitions}
-        />
-      ))}
-    </main>
+    <ThemeProvider
+      colors={{
+        white: {
+          title: "Blanc",
+          description: "",
+          value: "#ffffff",
+        },
+        dark: {
+          title: "Foncé",
+          description: "",
+          value: "#172b49",
+        },
+        light: {
+          title: "Clair",
+          description: "",
+          value: "#f4f5fd",
+        },
+        error: {
+          title: "Erreur",
+          description: "",
+          value: "#e74c3c",
+        },
+      }}
+    >
+      <main>
+        <PageHead pageData={pageData} />
+        {pageData.sections.map((section) => (
+          <Section
+            key={section.id}
+            data={section}
+            sectionsDefinitions={sectionsDefinitions}
+          />
+        ))}
+      </main>
+    </ThemeProvider>
   );
 };
 

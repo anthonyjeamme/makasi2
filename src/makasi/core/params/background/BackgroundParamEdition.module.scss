@@ -1,0 +1,78 @@
+.BackgroundParamEdition {
+  & > .label {
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  & > .buttons {
+    display: flex;
+    gap: 10px;
+
+    & > button {
+      flex: 1;
+      height: 120px;
+      border: 2px solid rgba(var(--dark-dec), 0.1);
+      transition: border-color 250ms;
+      border-radius: 10px;
+      background-color: white;
+
+      &:hover {
+        border-color: rgba(var(--dark-dec), 0.3);
+      }
+
+      & > svg {
+        font-size: 26px;
+        margin-bottom: 4px;
+      }
+
+      & > span {
+        display: block;
+      }
+    }
+  }
+
+  & > .color {
+    margin-top: 20px;
+  }
+}
+
+.GalleryModal {
+  background-color: white;
+  max-width: 100%;
+  width: 800px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & > nav {
+    display: flex;
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    z-index: 10;
+
+    & > button {
+      flex: 1;
+      height: 36px;
+    }
+  }
+
+  & > .content {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.UnsplashGallery {
+  padding: 20px;
+}
+
+.WebsiteGallery {
+  padding: 20px;
+  & > .empty {
+    text-align: center;
+    opacity: 0.5;
+  }
+}

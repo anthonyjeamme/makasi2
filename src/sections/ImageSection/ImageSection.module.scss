@@ -1,0 +1,22 @@
+.ImageSection {
+  //
+
+  padding: 100px 0;
+  color: var(--color);
+
+  & > .container {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    img {
+      position: relative;
+      z-index: 10;
+    }
+  }
+}

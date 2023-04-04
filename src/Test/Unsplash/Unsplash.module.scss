@@ -4,16 +4,47 @@
   margin: 40px auto;
 
   & > header {
-    background-color: var(--light);
-    padding: 20px;
-    margin-bottom: 20px;
+    margin: 10px 10px 20px 10px;
+    display: flex;
+    position: relative;
+
+    & > .icon {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      opacity: 0.5;
+    }
+
+    & > input {
+      flex: 1;
+      height: 36px;
+      border: 0;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(var(--dark-dec), 0.1);
+      border: 1px solid rgba(var(--dark-dec), 0.05);
+      padding: 0 10px 0 35px;
+      transition: border-color 250ms;
+
+      &:hover {
+        border-color: rgba(var(--dark-dec), 0.1);
+      }
+
+      &:focus {
+        border-color: rgba(var(--dark-dec), 0.3);
+      }
+    }
   }
 
   & > .result {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
     & > * {
-      width: 33%;
       position: relative;
 
       img {

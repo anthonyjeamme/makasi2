@@ -16,6 +16,8 @@ import { TPageContext, TPageData } from "./Page.types";
 import { pageReducer } from "./Page.reducer";
 
 import { TSectionDefinition } from "../section/Section.types";
+import { SectionPicker } from "./SectionPicker/SectionPicker";
+import { useModal } from "@/makasi/utils/Modal/Modal";
 
 export const withPageProvider =
   (Component: ComponentType<any>) =>
@@ -26,8 +28,8 @@ export const withPageProvider =
   }: {
     pageData: TPageData;
     sectionsDefinitions: TSectionDefinition[];
-  }) =>
-    (
+  }) => {
+    return (
       <PageProvider
         pageData={pageData}
         sectionsDefinitions={sectionsDefinitions}
@@ -35,7 +37,7 @@ export const withPageProvider =
         {(pageData) => <Component pageData={pageData} />}
       </PageProvider>
     );
-
+  };
 const pageContext = createContext<TPageContext>({
   // @ts-ignore
   pageData: {},
@@ -60,8 +62,7 @@ export const PageProvider: FC<TPageProviderProps> = ({
     inputPageData
   );
 
-  const { editionMode } = useWebsite();
-
+  const sectionPickerModal = useModal<{ index: number }>();
   const actionsRef = useRef<TUpdateAction[]>([]);
   const nextActionsRef = useRef<TUpdateAction[]>([]);
 
@@ -106,7 +107,7 @@ export const PageProvider: FC<TPageProviderProps> = ({
     //     window.removeEventListener("keydown", handleKeyDown);
     //   };
     // }
-  }, [editionMode]);
+  }, []);
 
   return (
     <pageContext.Provider
@@ -130,8 +131,17 @@ export const PageProvider: FC<TPageProviderProps> = ({
           );
         },
         getDefinitions: () => sectionsDefinitions,
+        getSectionDefinition: (sectionType: string) =>
+          sectionsDefinitions.find(
+            (sectionDefinition) => sectionDefinition.id === sectionType
+          ) || null,
+
+        addSection: (index: number) => {
+          sectionPickerModal.open({ index });
+        },
       }}
     >
+      <SectionPicker {...sectionPickerModal} />
       {children(pageData)}
     </pageContext.Provider>
   );

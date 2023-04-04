@@ -13,10 +13,8 @@ export default function Document() {
         <MakasiDocumentHead websiteData={websiteData} />
       </Head>
       <body>
-        <MakasiDocumentBody websiteData={websiteData}>
-          <Main />
-          <NextScript />
-        </MakasiDocumentBody>
+        <Main />
+        <NextScript />
       </body>
     </Html>
   );

@@ -1,8 +1,5 @@
-import uniqid from "uniqid";
-
 import { createContext, FC, ReactNode, useContext } from "react";
 import {
-  createCreateSectionAction,
   createMoveSectionAction,
   createRemoveSectionAction,
   createUpdateFieldAction,
@@ -10,7 +7,8 @@ import {
 } from "../actions/actions.utils";
 
 import { usePage } from "../PageEdition/page.context";
-import { TSectionData } from "./Section.types";
+import { TSectionData, TSectionDefinition } from "./Section.types";
+import { TSectionParamValue } from "../params/params.types";
 
 type TSectionContext = {
   data: TSectionData;
@@ -54,7 +52,8 @@ export const useSection = () => useContext(sectionContext);
 
 export const useSectionEdition = () => {
   const { data } = useContext(sectionContext);
-  const { getPageId, pageData, pushAction, getDefinitions } = usePage();
+  const { getPageId, pageData, pushAction, getSectionDefinition, addSection } =
+    usePage();
 
   const getLocation = () => ({
     pageId: getPageId(),
@@ -82,47 +81,24 @@ export const useSectionEdition = () => {
   const addSectionBefore = () => {
     const location = getLocation();
 
-    const [sectionDefinition] = getDefinitions();
+    addSection(location.sectionIndex);
+  };
 
-    if (!sectionDefinition) return;
-
-    const sectionData = {
-      id: uniqid(),
-      name: sectionDefinition.id,
-      params: sectionDefinition.getDefaultParams(),
-      fieldsData: sectionDefinition.getDefaultFieldsData(),
-    };
-
-    pushAction?.(
-      createCreateSectionAction(
-        sectionData,
-        location.sectionIndex,
-        location.pageId
-      )
-    );
+  const getNewSectionDefaultParams = (
+    sectionDefinition: TSectionDefinition
+  ) => {
+    return Object.entries(sectionDefinition.params).reduce<
+      Record<string, TSectionParamValue>
+    >((acc, [paramKey, paramDefinition]) => {
+      acc[paramKey] = paramDefinition.defaultValue;
+      return acc;
+    }, {});
   };
 
   const addSectionAfter = () => {
     const location = getLocation();
 
-    const [sectionDefinition] = getDefinitions();
-
-    if (!sectionDefinition) return;
-
-    const sectionData = {
-      id: uniqid(),
-      name: sectionDefinition.id,
-      params: sectionDefinition.getDefaultParams(),
-      fieldsData: sectionDefinition.getDefaultFieldsData(),
-    };
-
-    pushAction?.(
-      createCreateSectionAction(
-        sectionData,
-        location.sectionIndex + 1,
-        location.pageId
-      )
-    );
+    addSection(location.sectionIndex + 1);
   };
 
   const updateParam = (paramKey: string, value: any) => {
@@ -139,6 +115,10 @@ export const useSectionEdition = () => {
     );
   };
 
+  const getDefinition = () => {
+    return getSectionDefinition(data.name);
+  };
+
   return {
     data,
     getLocation,
@@ -148,6 +128,7 @@ export const useSectionEdition = () => {
     addSectionBefore,
     addSectionAfter,
     updateParam,
+    getDefinition,
   };
 };
 

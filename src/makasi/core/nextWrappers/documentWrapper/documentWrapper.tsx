@@ -1,4 +1,5 @@
 import { CSSProperties, FC, ReactNode } from "react";
+import { ThemeProvider } from "../../contexts/ThemeContext/ThemeContext";
 
 export const MakasiDocumentHead: FC<{
   websiteData: TWebsiteData;
@@ -12,25 +13,22 @@ export const MakasiDocumentHead: FC<{
   );
 };
 
-export const MakasiDocumentBody: FC<{
-  websiteData: TWebsiteData;
-  children: ReactNode;
-}> = ({ children, websiteData }) => {
-  return (
-    <div
-      style={
-        {
-          fontFamily: "'Lato', sans-serif",
-          "--dark": "#172b49",
-          "--light": "#f4f5fd",
-          "--error": "#e74c3c",
-        } as CSSProperties
-      }
-    >
-      {children}
-    </div>
-  );
-};
+// export const MakasiDocumentBody: FC<{
+//   websiteData: TWebsiteData;
+//   children: ReactNode;
+// }> = ({ children, websiteData }) => {
+//   return (
+//     <ThemeProvider
+//       colors={{
+//         dark: "#172b49",
+//         light: "#f4f5fd",
+//         error: "#e74c3c",
+//       }}
+//     >
+//       {children}
+//     </ThemeProvider>
+//   );
+// };
 
 const getGoogleProviderFontURL = (websiteData: TWebsiteData) => {
   const googleFonts = websiteData.fonts.filter(
