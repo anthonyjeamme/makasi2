@@ -6,6 +6,7 @@ import { Heading } from "@/makasi/primitives/Heading/Heading";
 import { Text } from "@/makasi/primitives/Text/Text";
 
 import styles from "./HeaderSection.module.scss";
+import { Background } from "@/makasi/primitives/Background/Background";
 const className = classNameModule(styles);
 
 interface THeaderSectionProps {
@@ -14,22 +15,24 @@ interface THeaderSectionProps {
 
 const HeaderSection: FC<THeaderSectionProps> = ({ data }) => {
   return (
-    <div
-      {...className("HeaderSection")}
-      style={
-        {
-          "--background": getCSSProperty(data?.params?.background),
-          "--color": getCSSProperty(data?.params?.color),
-        } as CSSProperties
-      }
-    >
-      <div {...className("container")}>
-        <Heading field="title" />
-        <div {...className("subtitle")}>
-          <Text field="subtitle" />
+    <Background data={data.params.background}>
+      <div
+        {...className("HeaderSection")}
+        style={
+          {
+            // "--background": getCSSProperty(data?.params?.background),
+            // "--color": getCSSProperty(data?.params?.color),
+          } as CSSProperties
+        }
+      >
+        <div {...className("container")}>
+          <Heading field="title" />
+          <div {...className("subtitle")}>
+            <Text field="subtitle" />
+          </div>
         </div>
       </div>
-    </div>
+    </Background>
   );
 };
 

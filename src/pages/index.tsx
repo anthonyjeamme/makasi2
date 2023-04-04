@@ -21,8 +21,10 @@ export const Home: FC<THomeProps> = ({ pageData }) => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const pageData = JSON.parse(fs.readFileSync("data/home.json", "utf-8"));
+
+  console.log(context)
 
   return {
     props: {

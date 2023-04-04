@@ -7,7 +7,7 @@ export const headerSectionDefinition: TSectionDefinition = {
   getDefaultFieldsData: () => ({
     title: {
       tag: "h1",
-      text: "Titre",
+      text: "Title",
     },
     subtitle: {
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, voluptas provident, ducimus officiis, soluta atque nisi asperiores laudantium neque quae dolores quisquam quibusdam possimus ad eius excepturi temporibus quos culpa.",

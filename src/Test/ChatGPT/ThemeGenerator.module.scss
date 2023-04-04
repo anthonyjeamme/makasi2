@@ -1,0 +1,66 @@
+.ThemeGenerator {
+  background-color: var(--light);
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+
+  & > div {
+    width: 1000px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 80px 0;
+
+    h1 {
+      font-weight: 800;
+      color: var(--dark);
+      text-align: center;
+      margin: 0 0 40px 0;
+    }
+
+    & > textarea {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      border: 0;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(#172b49, 0.1);
+      height: 200px;
+      padding: 20px;
+    }
+
+    & > button {
+      height: 50px;
+      background-color: var(--dark);
+      color: white;
+      width: 100%;
+      border-radius: 4px;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+
+    & > .result {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+
+      & > .theme {
+        text-align: center;
+        padding: 20px;
+        border-radius: 5px;
+        p {
+          margin: 0 0 15px 0;
+        }
+
+        & > button {
+          border-radius: 5px;
+          height: 40px;
+          padding: 0 20px;
+        }
+      }
+    }
+  }
+}
