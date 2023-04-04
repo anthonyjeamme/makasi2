@@ -33,7 +33,7 @@ interface TBackgroundImageProps {
 }
 
 const BackgroundImage: FC<TBackgroundImageProps> = ({ data, children }) => {
-  const [url, setURL] = useState<null | string>(data.url);
+  const [url, setURL] = useState<null | string>(null);
 
   useEffect(() => {
     setURL(getResponsiveImageURL(data));
