@@ -61,6 +61,23 @@ const pageData = {
         },
       },
     },
+    {
+      id: "lfvh5n1gx",
+      name: "header-section",
+      params: {
+        background: {
+          type: "color",
+          color: "--dark",
+        },
+        color: "white",
+      },
+      fieldsData: {
+        title: { tag: "h1", text: "Titre" },
+        subtitle: {
+          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, voluptas provident, ducimus officiis, soluta atque nisi asperiores laudantium neque quae dolores quisquam quibusdam possimus ad eius excepturi temporibus quos culpa.",
+        },
+      },
+    },
   ],
   layout: {},
 };
