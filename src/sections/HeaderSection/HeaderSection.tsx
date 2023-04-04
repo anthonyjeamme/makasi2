@@ -7,10 +7,14 @@ import { Text } from "@/makasi/primitives/Text/Text";
 
 import styles from "./HeaderSection.module.scss";
 import { Background } from "@/makasi/primitives/Background/Background";
+import { TBackgroundParam } from "@/makasi/primitives/Background/Background.types";
 const className = classNameModule(styles);
 
 interface THeaderSectionProps {
-  data: TSectionData;
+  data: TSectionData<{
+    background: TBackgroundParam;
+    color: string;
+  }>;
 }
 
 const HeaderSection: FC<THeaderSectionProps> = ({ data }) => {
@@ -21,7 +25,7 @@ const HeaderSection: FC<THeaderSectionProps> = ({ data }) => {
         style={
           {
             // "--background": getCSSProperty(data?.params?.background),
-            // "--color": getCSSProperty(data?.params?.color),
+            "--color": getCSSProperty(data?.params.color),
           } as CSSProperties
         }
       >

@@ -1,15 +1,12 @@
-import { FC, ReactNode, useEffect, useState } from "react";
-import { classNameModule } from "@/utils/className/className";
+import { FC, ReactNode, useEffect, useRef, useState } from "react";
 
-import styles from "./Background.module.scss";
 import {
   TBackgroundParam,
   TColorBackground,
   TImageBackground,
 } from "./Background.types";
 import { getResponsiveImageURL } from "./Background.utils";
-
-const className = classNameModule(styles);
+import Image, { ImageLoaderProps } from "next/image";
 
 interface TBackgroundProps {
   //
@@ -34,18 +31,34 @@ interface TBackgroundImageProps {
 
 const BackgroundImage: FC<TBackgroundImageProps> = ({ data, children }) => {
   const [url, setURL] = useState<null | string>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setURL(getResponsiveImageURL(data));
+    const containerElement = containerRef.current;
+
+    if (!containerElement) return;
+
+    setURL(getResponsiveImageURL(data, containerElement));
   }, []);
 
   return (
     <div
-      {...className("Background")}
+      ref={containerRef}
       style={{
-        backgroundImage: url ? `url(${url})` : "unset",
+        position: "relative",
       }}
     >
+      <Image
+        loader={unsplashLoader}
+        src={data.url}
+        fill
+        alt=""
+        style={{
+          objectFit: "cover",
+          pointerEvents: "none",
+        }}
+      />
+
       {children}
     </div>
   );
@@ -56,15 +69,29 @@ interface TColorBackgroundProps {
   data: TColorBackground;
 }
 
+const unsplashLoader = ({ src, width, quality }: ImageLoaderProps) => {
+  const url = new URL(src);
+
+  return `${url.origin}${url.pathname}?w=${width}&q=${quality || 80}`;
+};
+
 const ColorBackground: FC<TColorBackgroundProps> = ({ children, data }) => {
   return (
     <div
-      {...className("Background")}
       style={{
-        backgroundColor: data.color,
+        backgroundColor: getCSSProperty(data.color),
       }}
     >
       {children}
     </div>
   );
 };
+
+const getCSSProperty = (value: string) =>
+  !value
+    ? undefined
+    : value.startsWith("--")
+    ? `var(${value})`
+    : value.startsWith("http")
+    ? `url(${value})`
+    : value;

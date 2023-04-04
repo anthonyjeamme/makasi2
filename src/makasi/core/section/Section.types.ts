@@ -1,10 +1,10 @@
 import { ComponentType, FC } from "react";
 
-export type TSectionData = {
+export type TSectionData<TParams = Record<string, any>> = {
   id: string;
   name: string;
   fieldsData: Record<string, any>;
-  params: Record<string, any>;
+  params: TParams;
 };
 
 export type TSectionDefinition = {

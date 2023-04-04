@@ -1,3 +1,10 @@
 .Background {
-  background-size: cover;
+  position: relative;
+
+  & > .image {
+    img {
+      object-fit: cover;
+      pointer-events: none;
+    }
+  }
 }
