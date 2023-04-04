@@ -6,9 +6,9 @@ import { TSectionData, TSectionDefinition } from "../section/Section.types";
 import { useWebsite } from "../website/website.context";
 import { PageHead } from "../PageEdition/PageHead";
 
-const PageEdition = dynamic(() => import("../PageEdition/Page"), {
-  ssr: false,
-});
+// const PageEdition = dynamic(() => import("../PageEdition/Page"), {
+//   ssr: false,
+// });
 
 interface TPageProps {
   pageData: TPageData;
@@ -16,16 +16,16 @@ interface TPageProps {
 }
 
 const Page: FC<TPageProps> = ({ pageData, sectionsDefinitions }) => {
-  const { editionMode } = useWebsite();
+  // const { editionMode } = useWebsite();
 
-  if (editionMode) {
-    return (
-      <PageEdition
-        pageData={pageData}
-        sectionsDefinitions={sectionsDefinitions}
-      />
-    );
-  }
+  // if (editionMode) {
+  //   return (
+  //     <PageEdition
+  //       pageData={pageData}
+  //       sectionsDefinitions={sectionsDefinitions}
+  //     />
+  //   );
+  // }
 
   return (
     <main>

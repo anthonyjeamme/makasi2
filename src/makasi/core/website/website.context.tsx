@@ -19,10 +19,14 @@ const websiteContext = createContext<TWebsiteContext>({
 
 interface TWebsiteProviderProps {
   children: ReactNode;
+  editionMode?: boolean;
 }
 
-export const WebsiteProvider: FC<TWebsiteProviderProps> = ({ children }) => {
-  const [editionMode, setEditionMode] = useState<boolean>(false);
+export const WebsiteProvider: FC<TWebsiteProviderProps> = ({
+  children,
+  editionMode: defaultEditionMode = false,
+}) => {
+  const [editionMode, setEditionMode] = useState<boolean>(defaultEditionMode);
 
   return (
     <websiteContext.Provider
@@ -31,7 +35,7 @@ export const WebsiteProvider: FC<TWebsiteProviderProps> = ({ children }) => {
         toggleEditionMode: () => setEditionMode(!editionMode),
       }}
     >
-      <div
+      {/* <div
         style={{
           position: "fixed",
           top: 20,
@@ -48,7 +52,7 @@ export const WebsiteProvider: FC<TWebsiteProviderProps> = ({ children }) => {
         >
           {editionMode ? <X /> : <Pencil />}
         </button>
-      </div>
+      </div> */}
       {children}
     </websiteContext.Provider>
   );
