@@ -43,7 +43,7 @@ const BackgroundImage: FC<TBackgroundImageProps> = ({ data, children }) => {
     <div
       {...className("Background")}
       style={{
-        backgroundImage: `url(${url})`,
+        backgroundImage: url ? `url(${url})` : "unset",
       }}
     >
       {children}
