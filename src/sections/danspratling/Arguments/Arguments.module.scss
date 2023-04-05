@@ -9,6 +9,11 @@
     padding: 160px 20px;
     margin: 0 auto;
     text-align: center;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+      padding: 60px 20px;
+    }
 
     h2 {
       font-size: 3rem;

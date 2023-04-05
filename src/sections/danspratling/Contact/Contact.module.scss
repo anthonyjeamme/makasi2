@@ -8,8 +8,13 @@
     width: 1280px;
     max-width: 100%;
     padding: 160px 20px;
+    box-sizing: border-box;
     margin: 0 auto;
     text-align: left;
+
+    @media (max-width: 768px) {
+      padding: 60px 20px;
+    }
 
     .paragraph {
       margin: 0 0 32px 0;
@@ -53,6 +58,10 @@
         ),
         linear-gradient(to right, rgba(#ffd166, 0.2), transparent 100%),
         linear-gradient(to left top, rgba(#e15120, 0.3), transparent 40%);
+
+      @media (max-width: 768px) {
+        padding: 30px;
+      }
 
       .content {
         background-color: #23252f;
