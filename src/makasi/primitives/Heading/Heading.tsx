@@ -7,7 +7,7 @@ import { TPrimitiveHeadingData } from "./Heading.types";
 
 import styles from "./Heading.module.scss";
 import { useEditionContext } from "@/makasi/core/contexts/EditionContext/EditionContext";
-import { useField } from "@/makasi/core/Pagee/Page";
+import { useField } from "@/makasi/core/Page/Page";
 const className = classNameModule(styles);
 
 interface THeadingProps {

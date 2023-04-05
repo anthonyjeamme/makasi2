@@ -2,7 +2,7 @@ import { FC } from "react";
 import dynamic from "next/dynamic";
 
 import { useEditionContext } from "@/makasi/core/contexts/EditionContext/EditionContext";
-import { useField } from "@/makasi/core/Pagee/Page";
+import { useField } from "@/makasi/core/Page/Page";
 import { TPrimitiveTextData } from "./Text.types";
 
 import { classNameModule } from "@/utils/className/className";
