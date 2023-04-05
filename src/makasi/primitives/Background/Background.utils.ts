@@ -4,7 +4,7 @@ export const getResponsiveImageURL = (
   image: TImageBackgroundValue,
   containerElement: HTMLDivElement
 ) => {
-  if (image.provider === "unsplash") {
+  if (image.url.includes("unsplash")) {
     const url = new URL(image.url);
 
     const width = Math.floor(containerElement.clientWidth / 100) * 100;

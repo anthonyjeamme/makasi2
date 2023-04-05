@@ -7,6 +7,7 @@ const className = classNameModule(styles);
 
 interface TImageProps {
   //
+  src?: string;
 }
 
 export const Image: FC<TImageProps> = ({ src }) => {

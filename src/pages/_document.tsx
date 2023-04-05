@@ -1,7 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
 import {
-  MakasiDocumentBody,
   MakasiDocumentHead,
   TWebsiteData,
 } from "@/makasi/core/nextWrappers/documentWrapper/documentWrapper";

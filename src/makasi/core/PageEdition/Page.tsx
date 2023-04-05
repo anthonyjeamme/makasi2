@@ -29,6 +29,7 @@ const pageContext = createContext<TPageContext>({
   getDefinitions: () => [],
   getPageId: () => "",
   getSectionDefinition: () => null,
+  addSection: () => null,
 });
 
 export const usePageData = () => useContext(pageContext);
