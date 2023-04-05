@@ -4,6 +4,7 @@ import { TPageData } from "@/makasi/core/PageEdition/Page.types";
 import { headerSectionDefinition } from "@/sections/HeaderSection/HeaderSection.definition";
 import { paragraphSectionDefinition } from "@/sections/ParagraphSection/ParagraphSection.definition";
 import { FC } from "react";
+import { introSectionDefinition } from "@/sections/IntroSection/IntroSection.definition";
 
 interface THomeProps {
   pageData: TPageData;
@@ -28,6 +29,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 const sectionsDefinitions = [
+  introSectionDefinition,
   headerSectionDefinition,
   paragraphSectionDefinition,
 ];
