@@ -1,7 +1,6 @@
 import fs from "fs";
 
 import { GetServerSideProps } from "next";
-import Page from "@/makasi/core/Page/Page";
 import { TPageData } from "@/makasi/core/PageEdition/Page.types";
 import { headerSectionDefinition } from "@/sections/HeaderSection/HeaderSection.definition";
 import { paragraphSectionDefinition } from "@/sections/ParagraphSection/ParagraphSection.definition";
