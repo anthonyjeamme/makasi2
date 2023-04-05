@@ -1,0 +1,18 @@
+.Arguments {
+  //
+  background-color: #23252f;
+  color: white;
+
+  & > .container {
+    width: 1280px;
+    max-width: 100%;
+    padding: 160px 20px;
+    margin: 0 auto;
+    text-align: center;
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 500;
+    }
+  }
+}

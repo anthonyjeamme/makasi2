@@ -8,9 +8,15 @@ const className = classNameModule(styles);
 
 interface THeadingProps {
   field: string;
+  defaultTag?: string;
+  tags?: string[];
 }
 
-export const HeadingEdition: FC<THeadingProps> = ({ field }) => {
+export const HeadingEdition: FC<THeadingProps> = ({
+  field,
+  defaultTag,
+  tags,
+}) => {
   const rootRef = useRef<HTMLHeadingElement>(null);
   const [hasFocus, setHasFocus] = useState(false);
   const { data, onChange } = useSectionField<{
@@ -20,7 +26,7 @@ export const HeadingEdition: FC<THeadingProps> = ({ field }) => {
   const modifiedRef = useRef(false);
 
   return createElement(
-    data?.tag || "h1",
+    data?.tag || defaultTag || "h1",
     {
       ...className("HeadingEdition", { edition: true, active: hasFocus }),
       contentEditable: true,

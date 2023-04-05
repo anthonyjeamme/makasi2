@@ -1,0 +1,31 @@
+.PortfolioSection {
+  background-color: #23252f;
+  color: white;
+
+  & > .container {
+    width: 1280px;
+    max-width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+    text-align: center;
+
+    .computer {
+      position: relative;
+
+      .computer-image {
+        position: relative;
+        z-index: 1;
+      }
+
+      .preview {
+        position: absolute;
+        top: 20px;
+        left: 160px;
+
+        height: calc(100% - 60px);
+        width: calc(100% - 320px);
+        object-fit: cover;
+      }
+    }
+  }
+}

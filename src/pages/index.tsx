@@ -9,6 +9,9 @@ import dynamic from "next/dynamic";
 import { WebsiteProvider } from "@/makasi/core/website/website.context";
 import { imageSectionDefinition } from "@/sections/ImageSection/ImageSection.definition";
 import { introSectionDefinition } from "@/sections/IntroSection/IntroSection.definition";
+import { danspratlingHeaderSectionDefinition } from "@/sections/danspratling/HeaderSection/HeaderSection.definition";
+import { danspratlingPortfolioSectionDefinition } from "@/sections/danspratling/PortfolioSection/PortfolioSection.definition";
+import { danspratlingSections } from "@/sections/danspratling";
 
 const PageEdition = dynamic(() => import("../makasi/core/PageEdition/Page"), {
   ssr: false,
@@ -42,6 +45,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const sectionsDefinitions = [
+  ...danspratlingSections,
   introSectionDefinition,
   headerSectionDefinition,
   paragraphSectionDefinition,

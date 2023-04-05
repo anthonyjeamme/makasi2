@@ -5,6 +5,7 @@ import { headerSectionDefinition } from "@/sections/HeaderSection/HeaderSection.
 import { paragraphSectionDefinition } from "@/sections/ParagraphSection/ParagraphSection.definition";
 import { FC } from "react";
 import { introSectionDefinition } from "@/sections/IntroSection/IntroSection.definition";
+import { danspratlingSections } from "@/sections/danspratling";
 
 interface THomeProps {
   pageData: TPageData;
@@ -28,11 +29,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-const sectionsDefinitions = [
-  introSectionDefinition,
-  headerSectionDefinition,
-  paragraphSectionDefinition,
-];
+const sectionsDefinitions = [...danspratlingSections];
 
 const pageData = {
   id: "home",
@@ -46,104 +43,85 @@ const pageData = {
   },
   sections: [
     {
-      id: "lg2wkajk",
-      name: "intro-section",
+      id: "lg45ngmo",
+      name: "danspratling/header-section",
       params: {
-        background: {
-          type: "image",
-          color: "--dark",
-          url: "https://images.unsplash.com/photo-1509023464722-18d996393ca8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0Mjk1Mjd8MHwxfHNlYXJjaHwxfHxkYXJrfGVufDB8fHx8MTY4MDY1MTY0NQ&ixlib=rb-4.0.3&q=80&w=400",
-        },
+        background: { type: "color", color: "--dark" },
         textColor: { color: "--light" },
       },
       fieldsData: {
-        overtitle: { text: "ARRIVE BIENTÔT" },
-        title: { text: "L'agence Web Nouvelle Génération" },
-        mailmessage: { text: "Inscrivez-vous à la béta" },
-        subtitle: {
-          text: "Révolutionnez votre présence en ligne avec l'agence web de demain.",
-        },
+        title: { text: "I create beautiful websites your users will love" },
+        overtitle: { text: "Design. Build. Improve." },
       },
     },
     {
-      id: "section_id",
-      name: "header-section",
+      id: "lg46h3la",
+      name: "danspratling/portfolio-section",
       params: {
-        background: {
-          type: "color",
-          url: "https://images.unsplash.com/photo-1571504211935-1c936b327411?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0Mjk1Mjd8MHwxfHNlYXJjaHwyfHxjYXN0bGV8ZW58MHx8fHwxNjgwMTg3MzAy&ixlib=rb-4.0.3&q=80&w=400",
-          color: "--light",
-        },
-        textColor: { color: "--dark" },
+        background: { type: "color", color: "--primary" },
+        textColor: { color: "--light" },
       },
-      fieldsData: {
-        title: { tag: "h1", text: "A" },
-        subtitle: {
-          text: "Découvrez une expérience immersive au cœur de la nature sauvage, loin du bruit de la ville.",
-        },
-      },
+      fieldsData: {},
     },
     {
-      id: "lg2otgj9",
-      name: "header-section",
+      id: "lg46olga",
+      name: "danspratling/arguments-section",
       params: {
-        background: {
-          type: "image",
-          color: "--dark",
-          url: "https://images.unsplash.com/photo-1514539079130-25950c84af65?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0Mjk1Mjd8MHwxfHNlYXJjaHw0fHxjYXN0bGV8ZW58MHx8fHwxNjgwMTg3MzAy&ixlib=rb-4.0.3&q=80&w=400",
-        },
-        textColor: { color: "--white" },
-      },
-      fieldsData: {
-        title: { tag: "h1", text: "Titre" },
-        subtitle: {
-          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, voluptas provident, ducimus officiis, soluta atque nisi asperiores laudantium neque quae dolores quisquam quibusdam possimus ad eius excepturi temporibus quos culpa.",
-        },
-      },
-    },
-    {
-      id: "lg2m6iko",
-      name: "header-section",
-      params: {
-        background: { type: "color", color: "--error" },
+        background: { type: "color", color: "--dark" },
         textColor: { color: "--light" },
       },
       fieldsData: {
-        title: { tag: "h1", text: "Title" },
-        subtitle: {
-          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, voluptas provident, ducimus officiis, soluta atque nisi asperiores laudantium neque quae dolores quisquam quibusdam possimus ad eius excepturi temporibus quos culpa.",
-        },
+        title: { text: "Everything you need for a perfect website" },
       },
     },
     {
-      id: "lg2pahui",
-      name: "header-section",
+      id: "lg47esbh",
+      name: "danspratling/contact-section",
       params: {
-        background: { type: "color", color: "--light" },
-        textColor: { color: "--dark" },
-      },
-      fieldsData: {
-        title: { tag: "h1", text: "Title" },
-        subtitle: {
-          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, voluptas provident, ducimus officiis, soluta atque nisi asperiores laudantium neque quae dolores quisquam quibusdam possimus ad eius excepturi temporibus quos culpa.",
-        },
-      },
-    },
-    {
-      id: "lg2jfkq9",
-      name: "header-section",
-      params: {
-        background: {
-          type: "image",
-          color: "--dark",
-          url: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0Mjk1Mjd8MHwxfHNlYXJjaHwxfHxjYXN0bGV8ZW58MHx8fHwxNjgwMTg3MzAy&ixlib=rb-4.0.3&q=80&w=400",
-        },
+        background: { type: "color", color: "--dark" },
         textColor: { color: "--light" },
       },
       fieldsData: {
-        title: { tag: "h1", text: "Title" },
-        subtitle: {
-          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, voluptas provident, ducimus officiis, soluta atque nisi asperiores laudantium neque quae dolores quisquam quibusdam possimus ad eius excepturi temporibus quos culpa.",
+        title: { text: "I'm Tony" },
+        text: {
+          text: "I help growing companies like yours convert more customers and make more sales by combining your goals with your user’s needs.",
+        },
+      },
+    },
+    {
+      id: "lg47h0a5",
+      name: "danspratling/testimonials-section",
+      params: {
+        background: { type: "color", color: "--neutralmuted" },
+        textColor: { color: "--light" },
+      },
+      fieldsData: {
+        title: { text: "Bringing a personal touch" },
+        text: {
+          text: "Building a great website is more than just knowing how to make things look pretty or writing clever code. I listen to your needs, ensuring you get a product you’re happy with. Listen to the great things others have said.\n\n",
+        },
+      },
+    },
+    {
+      id: "lg47iopw",
+      name: "danspratling/trust-section",
+      params: {
+        background: { type: "color", color: "--dark" },
+        textColor: { color: "--light" },
+      },
+      fieldsData: { title: { text: "Trusted by teams" } },
+    },
+    {
+      id: "lg47q50x",
+      name: "danspratling/getting-started-section",
+      params: {
+        background: { type: "color", color: "--dark" },
+        textColor: { color: "--light" },
+      },
+      fieldsData: {
+        title: { text: "Where do we start?" },
+        paragraph: {
+          text: "Schedule a call so I can learn about your product and we can discuss the best way to help you meet your goals. I only work with two people each month so book a call now to avoid missing out.\n\n",
         },
       },
     },

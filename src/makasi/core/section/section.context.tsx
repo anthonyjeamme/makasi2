@@ -147,7 +147,7 @@ export function useSectionField<TData>(name: string): {
     onChange: (value) => {
       const oldValue = Object.keys(value).reduce<Record<string, any>>(
         (acc, key) => {
-          acc[key] = data.fieldsData[name][key];
+          acc[key] = data.fieldsData[name]?.[key] || {};
           return acc;
         },
         {}

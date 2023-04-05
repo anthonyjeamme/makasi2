@@ -11,7 +11,13 @@ export default function Document() {
       <Head title="Default title">
         <MakasiDocumentHead websiteData={websiteData} />
       </Head>
-      <body>
+      <body
+        style={{
+          fontFamily: `font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+            Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, Arial,
+            Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;`,
+        }}
+      >
         <Main />
         <NextScript />
       </body>
@@ -21,11 +27,11 @@ export default function Document() {
 
 const websiteData: TWebsiteData = {
   fonts: [
-    {
-      main: true,
-      provider: "google",
-      family: "Open Sans",
-      type: "sans-serif",
-    },
+    // {
+    //   main: true,
+    //   provider: "google",
+    //   family: "Open Sans",
+    //   type: "sans-serif",
+    // },
   ],
 };

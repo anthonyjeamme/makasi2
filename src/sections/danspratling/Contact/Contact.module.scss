@@ -1,0 +1,64 @@
+.Contact {
+  //
+
+  background-color: #23252f;
+  color: white;
+
+  & > .container {
+    width: 1280px;
+    max-width: 100%;
+    padding: 160px 20px;
+    margin: 0 auto;
+    text-align: left;
+
+    .paragraph {
+      margin: 0 0 32px 0;
+      line-height: 1.5;
+    }
+
+    button {
+      height: 48px;
+      background-color: white;
+      padding: 0 30px;
+      border-radius: 14px;
+      font-weight: 600;
+      color: #23252f;
+      transition: transform 250ms, box-shadow 250ms;
+      box-shadow: 0 6px 6px rgba(#1a1c23, 0);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 6px rgba(#1a1c23, 1);
+      }
+    }
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 500;
+      margin: 0 0 16px 0;
+    }
+
+    .block {
+      width: 1000px;
+      max-width: 100%;
+      margin: 0 auto;
+      background-color: #3b3a51;
+      border-radius: 1.25rem;
+      padding: 40px 40px 40px 30%;
+      box-sizing: border-box;
+      background-image: linear-gradient(
+          to bottom right,
+          rgba(#6d59a8, 1),
+          transparent 50%
+        ),
+        linear-gradient(to right, rgba(#ffd166, 0.2), transparent 100%),
+        linear-gradient(to left top, rgba(#e15120, 0.3), transparent 40%);
+
+      .content {
+        background-color: #23252f;
+        padding: 40px;
+        border-radius: 0.75rem;
+      }
+    }
+  }
+}

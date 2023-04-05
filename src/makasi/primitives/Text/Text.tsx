@@ -11,9 +11,10 @@ const className = classNameModule(styles);
 
 interface TTextProps {
   field: string;
+  className?: string;
 }
 
-export const Text: FC<TTextProps> = ({ field }) => {
+export const Text: FC<TTextProps> = ({ field, className = "" }) => {
   const { edition } = useEditionContext();
 
   if (edition) {
@@ -24,14 +25,24 @@ export const Text: FC<TTextProps> = ({ field }) => {
       }
     );
 
-    return <TextEdition field={field} />;
+    return <TextEdition field={field} className={className} />;
   }
 
-  return <TextRead field={field} />;
+  return <TextRead field={field} className={className} />;
 };
 
-const TextRead = ({ field }: { field: string }) => {
+const TextRead = ({
+  field,
+  className: inputClassName,
+}: {
+  field: string;
+  className: string;
+}) => {
   const { data } = useField<TPrimitiveTextData>(field);
 
-  return <div {...className("Text")}>{data?.text || ""}</div>;
+  return (
+    <div className={className("Text").className + " " + inputClassName}>
+      {data?.text || ""}
+    </div>
+  );
 };

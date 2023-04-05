@@ -10,6 +10,8 @@ import dynamic from "next/dynamic";
 import { WebsiteProvider } from "@/makasi/core/website/website.context";
 import { imageSectionDefinition } from "@/sections/ImageSection/ImageSection.definition";
 import { introSectionDefinition } from "@/sections/IntroSection/IntroSection.definition";
+import { danspratlingHeaderSectionDefinition } from "@/sections/danspratling/HeaderSection/HeaderSection.definition";
+import { danspratlingSections } from "@/sections/danspratling";
 
 interface THomeProps {
   pageData: TPageData;
@@ -36,6 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const sectionsDefinitions = [
+  ...danspratlingSections,
   introSectionDefinition,
   headerSectionDefinition,
   paragraphSectionDefinition,

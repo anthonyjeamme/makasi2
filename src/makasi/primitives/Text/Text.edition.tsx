@@ -10,9 +10,13 @@ const className = classNameModule(styles);
 
 interface TTextEditionProps {
   field: string;
+  className: string;
 }
 
-export const TextEdition: FC<TTextEditionProps> = ({ field }) => {
+export const TextEdition: FC<TTextEditionProps> = ({
+  field,
+  className: inputClassName,
+}) => {
   const { data, onChange } = useSectionField<TPrimitiveTextData>(field);
   const rootRef = useRef<HTMLDivElement>(null);
   const [hasFocus, setHasFocus] = useState(false);
@@ -20,7 +24,11 @@ export const TextEdition: FC<TTextEditionProps> = ({ field }) => {
 
   return (
     <div
-      {...className("Text", { edition: true, active: hasFocus })}
+      className={
+        className("Text", { edition: true, active: hasFocus }).className +
+        " " +
+        inputClassName
+      }
       ref={rootRef}
       contentEditable
       suppressContentEditableWarning

@@ -14,24 +14,54 @@ const Page: FC<TPageProps> = ({ pageData, sectionsDefinitions }) => {
   return (
     <ThemeProvider
       colors={{
+        primary: {
+          title: "Primaire",
+          description: "",
+          value: "#6d59a8",
+        },
+        secondary: {
+          title: "Secondaire",
+          description: "",
+          value: "#23252F",
+        },
         white: {
           title: "Blanc",
-          description: "",
+          description: "Blanc basique",
           value: "#ffffff",
+        },
+        accent: {
+          title: "Accent",
+          description: "",
+          value: "#E15120",
+        },
+        highlight: {
+          title: "Hightlight",
+          description: "",
+          value: "#ffd166",
+        },
+        neutral: {
+          title: "Neutre",
+          description: "",
+          value: "#23252F",
+        },
+        neutralmuted: {
+          title: "Neutre muté",
+          description: "",
+          value: "#1A1C23",
         },
         dark: {
           title: "Foncé",
-          description: "",
+          description: "Couleur du texte",
           value: "#172b49",
         },
         light: {
           title: "Clair",
-          description: "",
+          description: "Couleur de fond",
           value: "#f4f5fd",
         },
         error: {
           title: "Erreur",
-          description: "",
+          description: "Couleur pour les erreurs",
           value: "#e74c3c",
         },
       }}

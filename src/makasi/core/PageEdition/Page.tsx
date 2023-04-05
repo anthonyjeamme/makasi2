@@ -39,10 +39,40 @@ export const Page: FC<TPageProps> = ({ pageData }) => {
     <EditionContext>
       <ThemeProvider
         colors={{
+          primary: {
+            title: "Primaire",
+            description: "",
+            value: "#6d59a8",
+          },
+          secondary: {
+            title: "Secondaire",
+            description: "",
+            value: "#23252F",
+          },
           white: {
             title: "Blanc",
             description: "Blanc basique",
             value: "#ffffff",
+          },
+          accent: {
+            title: "Accent",
+            description: "",
+            value: "#E15120",
+          },
+          highlight: {
+            title: "Hightlight",
+            description: "",
+            value: "#ffd166",
+          },
+          neutral: {
+            title: "Neutre",
+            description: "",
+            value: "#23252F",
+          },
+          neutralmuted: {
+            title: "Neutre muté",
+            description: "",
+            value: "#1A1C23",
           },
           dark: {
             title: "Foncé",

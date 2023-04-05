@@ -1,0 +1,34 @@
+.Trust {
+  background-color: #23252f;
+  color: white;
+
+  & > .container {
+    width: 1280px;
+    max-width: 100%;
+    padding: 160px 20px;
+    margin: 0 auto;
+    text-align: center;
+
+    h2 {
+      font-size: 3rem;
+      margin: 0 0 48px;
+      font-weight: 600;
+    }
+
+    .logos {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      align-items: center;
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      img {
+        filter: invert(0.9);
+        opacity: 0.5;
+      }
+    }
+  }
+}
