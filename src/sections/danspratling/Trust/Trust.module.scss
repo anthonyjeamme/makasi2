@@ -1,7 +1,6 @@
 .Trust {
   background-color: #23252f;
   color: white;
-  display: none;
 
   & > .container {
     width: 1280px;
@@ -9,6 +8,7 @@
     padding: 160px 20px;
     margin: 0 auto;
     text-align: center;
+    box-sizing: border-box;
 
     h2 {
       font-size: 3rem;

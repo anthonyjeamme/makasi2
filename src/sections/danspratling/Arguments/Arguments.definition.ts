@@ -7,7 +7,11 @@ export const danspratlingArgumentsSectionDefinition: TSectionDefinition = {
   id: "danspratling/arguments-section",
   label: "Dan Spratling / Arguments",
   Component: dynamic(() => import("./Arguments"), { ssr: true }),
-  getDefaultFieldsData: () => ({}),
+  getDefaultFieldsData: () => ({
+    linktext: {
+      text: "Find out more about my services",
+    },
+  }),
   params: {
     background: backgroundParamDefinition(),
     textColor: textColorParamDefinition(),

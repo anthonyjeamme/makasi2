@@ -23,10 +23,33 @@
       max-width: 100%;
       margin: 0 auto;
       border-radius: 1.25rem;
-      text-align: left;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+
+      @media (max-width: 1000px) {
+        padding-top: 250px;
+      }
+
+      & > .illustration {
+        position: absolute;
+        top: 50%;
+        transform: translate(30%, -50%);
+        right: 0;
+
+        @media (max-width: 1000px) {
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .text {
+        text-align: left;
+      }
 
       @media (max-width: 768px) {
-        padding: 60px 40px;
+        padding: 250px 40px 60px 40px;
       }
 
       h2 {
@@ -44,13 +67,15 @@
         margin: 0 0 16px;
       }
 
-      & > button {
-        background-color: white;
-        color: var(--primary);
-        height: 48px;
-        padding: 0 30px;
-        border-radius: 14px;
-        font-weight: 600;
+      .text {
+        & > button {
+          background-color: white;
+          color: var(--primary);
+          height: 48px;
+          padding: 0 30px;
+          border-radius: 14px;
+          font-weight: 600;
+        }
       }
     }
   }

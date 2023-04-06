@@ -91,9 +91,12 @@ export function useField<TData>(fieldName: string): {
 } {
   const { data } = useContext(sectionContext);
 
+  // @ts-ignore
+  if (!data) return { data: {} };
+
   return {
     // @ts-ignore
-    data: data.fieldsData[fieldName],
+    data: data.fieldsData?.[fieldName] || {},
   };
 }
 

@@ -4,6 +4,7 @@ import { classNameModule } from "@/utils/className/className";
 import styles from "./HeaderSection.module.scss";
 import { Text } from "@/makasi/primitives/Text/Text";
 import { Heading } from "@/makasi/primitives/Heading/Heading";
+import { Button } from "@/makasi/primitives/Button/Button";
 
 const className = classNameModule(styles);
 
@@ -18,7 +19,7 @@ const HeaderSection: FC<THeaderSectionProps> = () => {
         <Text field="overtitle" {...className("overtitle")} />
         <Heading field="title" />
 
-        <button>Make it happen</button>
+        <Button field="button" />
       </div>
     </div>
   );

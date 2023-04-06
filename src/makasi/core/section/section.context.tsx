@@ -143,7 +143,7 @@ export function useSectionField<TData>(name: string): {
   const { pushAction } = usePage();
 
   return {
-    data: data.fieldsData[name],
+    data: data.fieldsData?.[name] || {},
     onChange: (value) => {
       const oldValue = Object.keys(value).reduce<Record<string, any>>(
         (acc, key) => {

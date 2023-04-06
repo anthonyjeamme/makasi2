@@ -1,0 +1,93 @@
+.ButtonEdition {
+  //
+  position: relative;
+  display: inline-flex;
+  z-index: 10;
+
+  & > header {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    background-color: white;
+    border-radius: 4px;
+    left: 50%;
+    transition: transform 100ms, opacity 100ms;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+    padding: 10px;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    z-index: 10;
+
+    & > button {
+      height: 36px;
+      border: 2px solid rgba(var(--dark-dec), 0.1);
+      background-color: white;
+      padding: 0 10px;
+      width: 120px;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      width: 120px;
+      & > label {
+        color: var(--dark);
+        text-align: left;
+        margin-bottom: 4px;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-radius: 14px;
+    padding: 0 20px;
+    font-weight: 600;
+    outline: none;
+    position: relative;
+    transition: background-color 250ms, color 250ms;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      border: 2px dashed currentColor;
+      border-radius: 5px;
+      pointer-events: none;
+      transition: opacity 250ms;
+      opacity: 0;
+      border-radius: inherit;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 0.2;
+      }
+    }
+  }
+
+  &.active {
+    & > header {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+      transition: transform 250ms, opacity 250ms;
+    }
+
+    & > .Button {
+      &::after {
+        opacity: 0.5 !important;
+      }
+    }
+  }
+}
