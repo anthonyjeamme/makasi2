@@ -78,6 +78,30 @@ const pageData = {
       fieldsData: {
         title: { text: "Everything you need for a perfect website" },
         linktext: { text: "Find out more about my services" },
+        "arg-title-0": { text: "Website Review" },
+        "arg-title-1": { text: "Business Strategy" },
+        "arg-title-2": { text: "User Experience Design" },
+        "arg-title-5": { text: "Ongoing Support" },
+        "arg-title-4": { text: "Rigorous Testing" },
+        "arg-title-3": { text: "Tailored Development" },
+        "arg-text-0": {
+          text: "I make sure your website is performing its best by thoroughly reviewing it before making any changes.",
+        },
+        "arg-text-3": {
+          text: "I build with your goals in mind, whether you want a simple flexible website, a custom storefront or a SaaS product.",
+        },
+        "arg-text-5": {
+          text: "Your website is always growing. Whether you’re adding new features or making improvements I’m here to help.",
+        },
+        "arg-text-4": {
+          text: "I ensure your website is of excellent quality by thoroughly testing using multiple approaches.",
+        },
+        "arg-text-2": {
+          text: "I design your website to be as easy to use as possible while guiding users towards the end goal.",
+        },
+        "arg-text-1": {
+          text: "We discuss what you are trying to achieve, and place goals on your website planning how to achieve that.",
+        },
       },
     },
     {

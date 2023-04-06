@@ -19,12 +19,12 @@ const Arguments: FC<TArgumentsProps> = () => {
         <Heading field="title" defaultTag="h2" />
 
         <div {...className("arguments")}>
-          <Argument />
-          <Argument />
-          <Argument />
-          <Argument />
-          <Argument />
-          <Argument />
+          <Argument n={0} />
+          <Argument n={1} />
+          <Argument n={2} />
+          <Argument n={3} />
+          <Argument n={4} />
+          <Argument n={5} />
         </div>
 
         <div {...className("link")}>
@@ -37,7 +37,7 @@ const Arguments: FC<TArgumentsProps> = () => {
 
 export default Arguments;
 
-const Argument = () => (
+const Argument = ({ n }: { n: number }) => (
   <div {...className("Argument")}>
     <div>
       <div {...className("icon")}>
@@ -46,12 +46,9 @@ const Argument = () => (
     </div>
 
     <div {...className("text")}>
-      <h3>Website Review</h3>
+      <Heading field={`arg-title-${n}`} defaultTag="h3" />
 
-      <p>
-        I make sure your website is performing its best by thoroughly reviewing
-        it before making any changes.
-      </p>
+      <Text field={`arg-text-${n}`} {...className("text-paragraph")} />
     </div>
   </div>
 );

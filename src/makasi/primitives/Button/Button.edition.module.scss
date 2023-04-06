@@ -12,7 +12,7 @@
     left: 50%;
     transition: transform 100ms, opacity 100ms;
     opacity: 0;
-    transform: translateX(-50%) translateY(-4px);
+    transform: translateX(-50%) translateY(4px);
     padding: 10px;
     pointer-events: none;
     display: flex;

@@ -30,14 +30,6 @@ const ButtonEdition: FC<TButtonEditionProps> = ({ field }) => {
       }}
     >
       <header>
-        <button
-          onMouseDown={(e) => {
-            e.preventDefault();
-          }}
-        >
-          Super
-        </button>
-
         <div>
           <label>Texte</label>
           <ThemeColorSelector
