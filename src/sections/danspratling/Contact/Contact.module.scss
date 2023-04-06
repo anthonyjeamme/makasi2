@@ -41,6 +41,10 @@
       font-size: 3rem;
       font-weight: 500;
       margin: 0 0 16px 0;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
     }
 
     .block {

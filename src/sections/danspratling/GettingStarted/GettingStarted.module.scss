@@ -32,6 +32,10 @@
       h2 {
         margin: 0 0 16px;
         font-size: 3rem;
+
+        @media (max-width: 768px) {
+          font-size: 2rem;
+        }
       }
 
       .paragraph {

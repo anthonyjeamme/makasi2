@@ -18,6 +18,10 @@
     h2 {
       font-size: 3rem;
       font-weight: 500;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
     }
   }
 }
