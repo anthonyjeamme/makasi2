@@ -52,6 +52,11 @@ const pageData = {
       fieldsData: {
         title: { text: "I create beautiful websites your users will love" },
         overtitle: { text: "Design. Build. Improve." },
+        button: {
+          content: "Make it happen",
+          backgroundColor: "--primary",
+          textColor: "--white",
+        },
       },
     },
     {
@@ -72,6 +77,7 @@ const pageData = {
       },
       fieldsData: {
         title: { text: "Everything you need for a perfect website" },
+        linktext: { text: "Find out more about my services" },
       },
     },
     {
