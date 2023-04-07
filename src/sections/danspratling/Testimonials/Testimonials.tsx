@@ -8,6 +8,7 @@ import { TTextColorParamValue } from "@/makasi/core/params/textColor/textColorPa
 import { Background } from "@/makasi/primitives/Background/Background";
 import { Heading } from "@/makasi/primitives/Heading/Heading";
 import { Text } from "@/makasi/primitives/Text/Text";
+import { getCSSProperty } from "@/makasi/core/utils/getCSSColor";
 
 const className = classNameModule(styles);
 
@@ -21,7 +22,12 @@ interface TTestimonialsProps {
 const Testimonials: FC<TTestimonialsProps> = ({ data }) => {
   return (
     <Background data={data.params.background}>
-      <div {...className("Testimonials")}>
+      <div
+        {...className("Testimonials")}
+        style={{
+          color: getCSSProperty(data.params.textColor.color),
+        }}
+      >
         <div {...className("container")}>
           <div {...className("columns")}>
             <div {...className("text")}>

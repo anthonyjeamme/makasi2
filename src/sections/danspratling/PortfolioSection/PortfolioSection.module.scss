@@ -1,10 +1,5 @@
 .PortfolioSection {
-  background-color: #23252f;
-  color: white;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
+  padding: 100px 0;
 
   & > .container {
     width: 1280px;
@@ -12,9 +7,43 @@
     padding: 0 20px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+
+    .mobile {
+      position: absolute;
+      display: inline-block;
+      z-index: 10;
+      right: 30px;
+      bottom: 0;
+
+      @media (max-width: 768px) {
+        position: relative;
+
+        right: unset;
+        bottom: unset;
+      }
+
+      & > .mobile-image {
+        position: relative;
+        z-index: 1;
+      }
+
+      & > .preview {
+        position: absolute;
+        top: 48px;
+        left: 20px;
+        height: calc(100% - 68px);
+        width: calc(100% - 40px);
+        object-fit: cover;
+      }
+    }
 
     .computer {
       position: relative;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
 
       .computer-image {
         position: relative;

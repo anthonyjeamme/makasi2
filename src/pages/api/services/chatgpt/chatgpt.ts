@@ -12,7 +12,7 @@ export default async function handler(
     const result = await messageTurbo(question);
 
     res.status(200).json({
-      result: JSON.parse(result.choices[0].message.content),
+      result: result.choices[0].message.content,
     });
   } catch (error) {
     res.status(500).json({
@@ -88,7 +88,7 @@ const messageTurbo = async (question: string) => {
       messages: [
         {
           role: "user",
-          content: formatQuestion(question),
+          content: question,
         },
       ],
       temperature: 0.7,

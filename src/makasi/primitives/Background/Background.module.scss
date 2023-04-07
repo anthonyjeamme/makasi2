@@ -1,5 +1,6 @@
 .Background {
   position: relative;
+  transition: background-color 400ms;
 
   & > .image {
     img {
