@@ -46,8 +46,8 @@ const pageData = {
       id: "lg45ngmo",
       name: "danspratling/header-section",
       params: {
-        background: { type: "color", color: "--dark" },
-        textColor: { color: "--light" },
+        background: { type: "color", color: "--secondary" },
+        textColor: { color: "--white" },
       },
       fieldsData: {
         title: { text: "I create beautiful websites your users will love" },
@@ -63,7 +63,7 @@ const pageData = {
       id: "lg46h3la",
       name: "danspratling/portfolio-section",
       params: {
-        background: { type: "color", color: "--primary" },
+        background: { type: "color", color: "--secondary" },
         textColor: { color: "--light" },
       },
       fieldsData: {},
